@@ -14,8 +14,8 @@ export const Footer = () => {
                 <Link href='/contact'>Contuct us</Link>
             </div>
             <div>
-                <a href="https://antoninazz.github.io">Antonina Zdebska</a>
                 <span>© 2025</span>
+                <a href="https://antoninazz.github.io">Antonina Zdebska</a>
             </div>
         </div>
     </footer>;
