@@ -5,7 +5,7 @@ import { CartItem } from "./cartItem";
 export const CartModal = () => {
     return (
         <div className="absolute w-max p-4 rounded-md top-12 right-0 shadow-[0_3px_10px_rgb(0,0,0,0.2)] z-1 flex flex-col gap-6 bg-white">
-            <h1>Shopping cart</h1>
+            <h1 className="text-xl">Shopping cart</h1>
             <div className="flex flex-col gap-8">
                 <CartItem />
                 <CartItem />
