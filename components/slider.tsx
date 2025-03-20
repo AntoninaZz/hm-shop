@@ -24,7 +24,7 @@ const slides = [
         id: 3,
         title: "Every Toy is Handmade",
         description: "Our creations are crafted by the talented artisan Antonina, who puts her heart into every stitch.",
-        img: "/logo.jpg",
+        img: "/slide3.jpg",
         url: "/",
         bg: "bg-linear-to-tr from-[var(--color-light-beige)] to-[var(--color-milk)]"
     }
@@ -34,7 +34,7 @@ export const Slider = () => {
     const [current, setCurrent] = useState(0);
     return (
         <div className="h-[calc(100vh-80px)] overflow-hidden">
-            <div className="w-max h-full flex transition-all ease-in-out duration-1000">
+            <div className={`w-max h-full flex transition-all ease-in-out duration-1000 -translate-x-[${current * 100}vw]`}>
                 {slides.map((slide) => (
                     <div key={slide.id} className={`${slide.bg} w-screen h-full flex flex-col gap-16 xl:flex-row`}>
                         <div className="h-1/2 xl:h-full xl:w-1/2 flex flex-col items-center justify-center gap-8 2xl:gap-12 text-center px-8">
@@ -51,9 +51,7 @@ export const Slider = () => {
                 ))}
                 <div className="absolute m-auto left-1/2 bottom-8 flex gap-4">
                     {slides.map((slide, i) => (
-                        <div className={`w-3 h-3 rounded-full ring-1 ring-[var(--foreground)] cursor-pointer  flex items-center justify-center ${current === i ? "scale-150" : ""}`} key={slide.id}>
-                            {current === i && (<div className="w-[6px] h-[6px] bg-[var(--foreground)] rounded-full"></div>)}
-                        </div>
+                        <div key={slide.id} className={`w-2 h-2 rounded-full cursor-pointer ${current === i ? 'bg-[var(--foreground)]' : 'bg-[var(--color-muted-green)]'}`} onClick={() => setCurrent(i)}></div>
                     ))}
                 </div>
             </div>
