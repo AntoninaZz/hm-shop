@@ -1,14 +1,14 @@
 "use client";
 import Link from "next/link";
 import Image from "next/image";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const slides = [
     {
         id: 1,
         title: "New Arrivals!",
         description: "Our crochet toy collection has new adorable friends! Choose your perfect companion.",
-        img: "/logo.jpg",
+        img: "/slide1.jpg",
         url: "/",
         bg: "bg-linear-to-tr from-[var(--color-powder-pink)] to-[var(--color-milk)]"
     },
@@ -16,7 +16,7 @@ const slides = [
         id: 2,
         title: "The Best Gift – a Handmade Toy",
         description: "Cozy, cute, and made with love – our toys make the perfect gift for both kids and adults.",
-        img: "/logo.jpg",
+        img: "/slide2.jpg",
         url: "/",
         bg: "bg-linear-to-tr from-[var(--color-muted-green)] to-[var(--color-milk)]"
     },
@@ -32,9 +32,15 @@ const slides = [
 
 export const Slider = () => {
     const [current, setCurrent] = useState(0);
+    useEffect(() => {
+        const interval = setInterval(() => {
+            setCurrent((prev) => (prev === slides.length - 1 ? 0 : prev + 1));
+        }, 7000);
+        return () => clearInterval(interval);
+    }, []);
     return (
         <div className="h-[calc(100vh-80px)] overflow-hidden">
-            <div className={`w-max h-full flex transition-all ease-in-out duration-1000 -translate-x-[${current * 100}vw]`}>
+            <div className={`w-max h-full flex transition-all ease-in-out duration-1000 -translate-x-[${current}00vw]`}>
                 {slides.map((slide) => (
                     <div key={slide.id} className={`${slide.bg} w-screen h-full flex flex-col gap-16 xl:flex-row`}>
                         <div className="h-1/2 xl:h-full xl:w-1/2 flex flex-col items-center justify-center gap-8 2xl:gap-12 text-center px-8">
@@ -49,11 +55,11 @@ export const Slider = () => {
                         </div>
                     </div>
                 ))}
-                <div className="absolute m-auto left-1/2 bottom-8 flex gap-4">
-                    {slides.map((slide, i) => (
-                        <div key={slide.id} className={`w-2 h-2 rounded-full cursor-pointer ${current === i ? 'bg-[var(--foreground)]' : 'bg-[var(--color-muted-green)]'}`} onClick={() => setCurrent(i)}></div>
-                    ))}
-                </div>
+            </div>
+            <div className="absolute m-auto left-1/2 bottom-8 flex gap-4">
+                {slides.map((slide, i) => (
+                    <div key={slide.id} className={`w-2 h-2 rounded-full cursor-pointer ${current === i ? 'bg-[var(--foreground)]' : 'bg-[var(--color-muted-green)]'}`} onClick={() => setCurrent(i)}></div>
+                ))}
             </div>
         </div>
     );
