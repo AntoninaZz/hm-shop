@@ -15,10 +15,10 @@ export const SearchBar = () => {
     }
 
     return (
-        <form className="flex justify-between gap-4 bg-gray-100 rounded-md p-2 flex-1" onSubmit={handleSearch}>
-            <input type="text" name="search" placeholder="Search" className="flex-1 outline-none" />
+        <form className="flex justify-between gap-4 bg-[var(--color-milk)] rounded-md p-2 flex-1" onSubmit={handleSearch}>
+            <input type="text" name="search" placeholder="Search" className="flex-1 outline-none placeholder-[var(--color-muted-green)]" />
             <button className="cursor-pointer">
-                <Image src="/search.svg" alt="search" width={16} height={16} />
+                <Image src="/search.svg" alt="search" width={20} height={20} />
             </button>
         </form>
     );
