@@ -54,6 +54,14 @@ a {
   text-decoration: none;
 }
 
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+.scrollbar-hide {
+  scrollbar-width: none;
+}
+
 @media (prefers-color-scheme: dark) {
   html {
     color-scheme: dark;
