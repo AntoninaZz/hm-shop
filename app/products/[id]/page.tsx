@@ -1,4 +1,4 @@
-import { ProductImages } from "@/components/productImages";
+import { ProductImages } from "@/components/ProductImages";
 
 export default function ProductPage() {
     return (

@@ -1,5 +1,5 @@
-import { Filter } from "@/components/filter";
-import { ProductList } from "@/components/productList";
+import { Filter } from "@/components/Filter";
+import { ProductList } from "@/components/ProductList";
 
 export default function ProductsPage() {
     return (

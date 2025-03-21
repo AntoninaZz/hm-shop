@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import Image from "next/image";
-import { Links } from "./links";
+import { Links } from "./Links";
 
 export const Menu = () => {
     const [open, setOpen] = useState(false);

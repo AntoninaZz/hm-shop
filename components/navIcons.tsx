@@ -1,7 +1,7 @@
 "use client"
 import Image from "next/image";
 import { useState } from "react";
-import { CartModal } from "./cartModal";
+import { CartModal } from "./CartModal";
 
 export const NavIcons = () => {
     const [isProfileOpen, setIsProfileOpen] = useState(false);

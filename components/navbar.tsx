@@ -1,8 +1,8 @@
-import { Menu } from "./menu";
-import { SearchBar } from "./searchBar";
-import { Links } from "./links";
-import { NavIcons } from "./navIcons";
-import { Logo } from "./logo";
+import { Menu } from "./Menu";
+import { SearchBar } from "./SearchBar";
+import { Links } from "./Links";
+import { NavIcons } from "./NavIcons";
+import { Logo } from "./Logo";
 
 export const Navbar = () => {
     return <nav className="h-27 relative px-4 md:px-8 lg:px-16 xl:px-32 2xl:px-64">

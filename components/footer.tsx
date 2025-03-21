@@ -1,5 +1,5 @@
-import { Logo } from "./logo";
-import { Links } from "./links";
+import { Logo } from "./Logo";
+import { Links } from "./Links";
 
 export const Footer = () => {
     return <footer className="py-24 px-4 md:px-8 lg:px-16 xl:px-32 2xl:px-64 bg-[var(--color-milk)] text-sm mt-24">

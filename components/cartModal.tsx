@@ -1,6 +1,6 @@
 "use client";
 
-import { CartItem } from "./cartItem";
+import { CartItem } from "./CartItem";
 
 export const CartModal = () => {
     return (
