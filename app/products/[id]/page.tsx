@@ -11,15 +11,15 @@ export default function ProductPage() {
             <div className="w-full lg:w-1/2 flex flex-col gap-6">
                 <h1 className="text-4xl font-medium">Product Name</h1>
                 <p>Description Lorem ipsum dolor sit, amet consectetur adipisicing elit. Facilis molestias corrupti vero blanditiis reprehenderit soluta libero ducimus dolor earum labore tempora dolores numquam eum tenetur, explicabo odit. A, blanditiis pariatur?</p>
-                <hr className="text-[var(--color-light-beige)]" />
+                <hr className="text-[var(--color-muted-green)]" />
                 <div className="flex items-center gap-4">
                     <h3 className="text-xl text-[var(--color-powder-pink)] line-through">49$</h3>
                     <h2 className="font-medium text-2xl">45$</h2>
                 </div>
-                <hr className="text-[var(--color-light-beige)]" />
+                <hr className="text-[var(--color-muted-green)]" />
                 <CustomizeProduct />
                 <Add />
-                <hr className="text-[var(--color-light-beige)]" />
+                <hr className="text-[var(--color-muted-green)]" />
                 <div className="text-sm">
                     <h4 className='font-medium mb-4 uppercase'>Description</h4>
                     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore ut repellendus illo placeat nesciunt sequi. Accusantium, nam iste rem distinctio ex aspernatur hic! Ab vel recusandae nostrum harum dicta. Officia.</p>
