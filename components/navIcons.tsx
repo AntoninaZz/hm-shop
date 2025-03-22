@@ -10,11 +10,11 @@ export const NavIcons = () => {
 
     return (
         <div className="flex items-center gap-4 xl:gap-6 relative">
-            <div className="relative cursor-pointer">
-                <Image src='/cart.svg' alt='profile' width={22} height={22} onClick={() => {
+            <div className="relative cursor-pointer" onClick={() => {
                     setIsCartOpen(!isCartOpen);
                     setIsProfileOpen(false);
-                }} />
+                }} >
+                <Image src='/cart.svg' alt='profile' width={22} height={22} />
                 <div className="absolute -top-4 -right-4 w-6 h-6 bg-[var(--color-powder-pink)] rounded-full text-sm flex items-center justify-center">2</div>
             </div>
             {isCartOpen && (
