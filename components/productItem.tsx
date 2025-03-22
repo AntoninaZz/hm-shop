@@ -1,5 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
+import { AddToCartBtn } from "./AddToCartBtn";
 
 export const ProductItem = () => {
     return (
@@ -13,7 +14,7 @@ export const ProductItem = () => {
                 <span className="font-semibold">45$</span>
             </div>
             <div className="text-sm text-[var(--color-muted-green)]">Description</div>
-            <button className="w-max rounded-2xl ring-1 ring-[var(--color-muted-green)] text--[var(--color-muted-green)] py-2 px-4 text-xs hover:bg-[var(--color-muted-green)] hover:text-white cursor-pointer">Add to Cart</button>
+            <AddToCartBtn />
         </Link>
     );
 }
