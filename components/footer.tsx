@@ -2,7 +2,7 @@ import { Logo } from "./Logo";
 import { Links } from "./Links";
 
 export const Footer = () => {
-    return <footer className="py-24 px-4 md:px-8 lg:px-16 xl:px-32 2xl:px-64 bg-[var(--color-milk)] text-sm mt-24">
+    return <footer className="py-24 page-padding bg-[var(--color-milk)] text-sm mt-24">
         <div className="flex justify-between gap-24 flex-col md:flex-row">
             <div className="flex flex-col gap-8 w-full md:w-1/8">
                 <Logo />

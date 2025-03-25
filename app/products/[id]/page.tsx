@@ -4,7 +4,7 @@ import { ProductImages } from "@/components/ProductImages";
 
 export default function ProductPage() {
     return (
-        <div className="px-4 md:px-8 lg:px-16 xl:px-32 2xl:px-64 flex flex-col lg:flex-row gap-16 relative">
+        <div className="page-padding flex flex-col lg:flex-row gap-16 relative">
             <div className="w-full lg:w-1/2 lg:sticky top-20 h-max">
                 <ProductImages />
             </div>
