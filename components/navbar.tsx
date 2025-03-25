@@ -5,7 +5,7 @@ import { NavIcons } from "./NavIcons";
 import { Logo } from "./Logo";
 
 export const Navbar = () => {
-    return <nav className="h-27 relative page-padding">
+    return <nav className="h-27 sticky top-0 md:relative page-padding bg-white z-2">
         {/* small screen navbar */}
         <div className="h-full flex items-center justify-between md:hidden"><Logo /><Menu /></div>
         {/* medium screen navbar */}
