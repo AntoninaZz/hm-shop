@@ -39,7 +39,7 @@ export const Slider = () => {
         }, 7000);
         return () => clearInterval(interval);
     }, []);
-    
+
     return (
         <div className="h-[calc(100vh-80px)] overflow-hidden">
             <div className={`w-max h-full flex transition-all ease-in-out duration-1000 -translate-x-[${current}00vw]`}>
@@ -49,7 +49,7 @@ export const Slider = () => {
                             <h1 className="text-5xl lg:text-6xl 2xl:text-8xl font-semibold">{slide.title}</h1>
                             <h2 className="text-xl lg:text-3xl 2xl:text-5xl">{slide.description}</h2>
                             <Link href={slide.url}>
-                                <button className="rounded-md bg-[var(--foreground)] text-[var(--color-milk)] py-3 px-4 cursor-pointer">SHOP NOW</button>
+                                <button className="rounded-md bg-[var(--color-olive-gray)] text-[var(--color-milk)] py-3 px-4 cursor-pointer">SHOP NOW</button>
                             </Link>
                         </div>
                         <div className="h-1/2 xl:h-full xl:w-1/2 relative">
@@ -60,7 +60,7 @@ export const Slider = () => {
             </div>
             <div className="absolute m-auto left-1/2 bottom-8 flex gap-4">
                 {slides.map((slide, i) => (
-                    <div key={slide.id} className={`w-2 h-2 rounded-full cursor-pointer ${current === i ? 'bg-[var(--foreground)]' : 'bg-[var(--color-muted-green)]'}`} onClick={() => setCurrent(i)}></div>
+                    <div key={slide.id} className={`w-2 h-2 rounded-full cursor-pointer ${current === i ? 'bg-[var(--color-olive-gray)]' : 'bg-[var(--color-muted-green)]'}`} onClick={() => setCurrent(i)}></div>
                 ))}
             </div>
         </div>

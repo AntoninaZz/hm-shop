@@ -20,7 +20,7 @@ export const CartModal = () => {
                 </p>
                 <div className="flex justify-between text-sm">
                     <button className="rounded-md py-3 px-4 ring-1 ring-[var(--color-muted-green)] cursor-pointer">View Cart</button>
-                    <button className="rounded-md py-3 px-4 bg-[var(--foreground)] cursor-pointer text-[var(--background)]">Chekout</button>
+                    <button className="rounded-md py-3 px-4 bg-[var(--color-olive-gray)] cursor-pointer text-[var(--background)]">Chekout</button>
                 </div>
             </div>
         </div>
