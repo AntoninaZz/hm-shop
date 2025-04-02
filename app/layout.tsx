@@ -12,7 +12,7 @@ const marmelad = Marmelad({
 });
 
 export const metadata: Metadata = {
-  title: "HM-shop",
+  title: "HM-Shop",
   description: "Online shop of handmade crochet toys",
 };
 

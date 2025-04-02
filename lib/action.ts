@@ -1,0 +1,9 @@
+export const getCategories = async () => {
+    const categories = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/categories`);
+    return await categories.json();
+}
+
+export const getProducts = async () => {
+    const products = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/products`);
+    return await products.json();
+}
