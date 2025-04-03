@@ -1,34 +1,47 @@
 import { Add } from "@/components/Add";
 import { CustomizeProduct } from "@/components/CustomizeProduct";
 import { ProductImages } from "@/components/ProductImages";
+import { getProductDetails } from "@/lib/action";
 
-export default function ProductPage() {
+const ProductPage = async ({ params }: { params: { id: string } }) => {
+    const productDetails: ProductType = await getProductDetails(params.id);
+    console.log(productDetails);
     return (
         <div className="page-padding flex flex-col lg:flex-row gap-16 relative">
             <div className="w-full lg:w-1/2 lg:sticky top-20 h-max">
-                <ProductImages />
+                <ProductImages media={productDetails.media} />
             </div>
             <div className="w-full lg:w-1/2 flex flex-col gap-6">
-                <h1 className="text-4xl font-medium">Product Name</h1>
-                <p>Description Lorem ipsum dolor sit, amet consectetur adipisicing elit. Facilis molestias corrupti vero blanditiis reprehenderit soluta libero ducimus dolor earum labore tempora dolores numquam eum tenetur, explicabo odit. A, blanditiis pariatur?</p>
+                <div className="flex items-center justify-between gap-4 flex-wrap">
+                    <h1 className="text-4xl font-medium">{productDetails.name}</h1>
+                    <p className="text-sm text-[var(--color-muted-green)]">{productDetails.category.map((cat) => cat.name).join(', ')}</p>
+                </div>
+                <p>{productDetails.description}</p>
                 <hr className="text-[var(--color-muted-green)]" />
                 <div className="flex items-center gap-4">
-                    <h3 className="text-xl text-[var(--color-powder-pink)] line-through">49$</h3>
-                    <h2 className="font-medium text-2xl">45$</h2>
+                    <h3 className="text-xl text-[var(--color-powder-pink)] line-through">{Math.round(productDetails.price * 120) / 100}$</h3>
+                    <h2 className="font-medium text-2xl">{productDetails.price}$</h2>
                 </div>
                 <hr className="text-[var(--color-muted-green)]" />
-                <CustomizeProduct />
-                <Add />
+                <CustomizeProduct colors={productDetails.colors} sizes={productDetails.sizes} />
+                <Add numberInStock={productDetails.numberInStock} />
                 <hr className="text-[var(--color-muted-green)]" />
                 <div className="text-sm">
                     <h4 className='font-medium mb-4 uppercase'>Description</h4>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore ut repellendus illo placeat nesciunt sequi. Accusantium, nam iste rem distinctio ex aspernatur hic! Ab vel recusandae nostrum harum dicta. Officia.</p>
-                </div>
-                <div className="text-sm">
-                    <h4 className='font-medium mb-4 uppercase'>Product Info</h4>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore ut repellendus illo placeat nesciunt sequi. Accusantium, nam iste rem distinctio ex aspernatur hic! Ab vel recusandae nostrum harum dicta. Officia.</p>
+                    <div className="flex flex-col gap-2">
+                        <div className="flex justify-between">
+                            <p>External material</p>
+                            <p>{productDetails.externalMaterial}</p>
+                        </div>
+                        <div className="flex justify-between">
+                            <p>Internal material</p>
+                            <p>{productDetails.internalMaterial}</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     );
 }
+
+export default ProductPage;

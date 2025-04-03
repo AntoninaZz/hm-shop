@@ -71,7 +71,7 @@ export const ProductItem: React.FC<ProductItemProps> = ({ product }) => {
             <div className="text-sm text-[var(--color-muted-green)]">{product.numberInStock > 0 ? 'available' : 'unavailable'}</div>
             <div className="flex items-center justify-between gap-4">
                 <AddToCartBtn />
-                <button type="button" onClick={handleLike} className="hover:text-[var(--color-powder-pink)]">
+                <button type="button" onClick={handleLike} className="hover:text-[var(--color-powder-pink)] cursor-pointer">
                     <Heart fill={`${isLiked ? 'var(--color-powder-pink)' : 'white'}`} className={`text-${isLiked ? '[var(--color-powder-pink)]' : '[var(--color-olive-gray)]'}`} />
                 </button>
             </div>
