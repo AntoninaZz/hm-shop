@@ -19,8 +19,11 @@ const ProductPage = async ({ params }: { params: { id: string } }) => {
                 <p>{productDetails.description}</p>
                 <hr className="text-[var(--color-muted-green)]" />
                 <div className="flex items-center gap-4">
-                    <h3 className="text-xl text-[var(--color-powder-pink)] line-through">{Math.round(productDetails.price * 120) / 100}$</h3>
-                    <h2 className="font-medium text-2xl">{productDetails.price}$</h2>
+                    {productDetails.discount > 0 && (<div className="relative">
+                        <h3 className="text-xl text-[var(--color-powder-pink)] line-through">{productDetails.price}$</h3>
+                        <p className="absolute left-10 bottom-5 rounded-md px-1 bg-[var(--color-powder-pink)] text-white">-{productDetails.discount}%</p>
+                    </div>)}
+                    <h2 className="font-medium text-2xl">{Math.round(productDetails.price * (100 - productDetails.discount)) / 100}$</h2>
                 </div>
                 <hr className="text-[var(--color-muted-green)]" />
                 <CustomizeProduct colors={productDetails.colors} sizes={productDetails.sizes} />

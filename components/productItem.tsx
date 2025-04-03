@@ -64,11 +64,12 @@ export const ProductItem: React.FC<ProductItemProps> = ({ product }) => {
                 <Image src={product.media[0]} alt={product.name} fill sizes="25vw" className="absolute object-cover rounded-md z-1 hover:opacity-0 transition-opacity ease-in duration-500" />
                 <Image src={product.media[product.media.length - 1]} alt={product.name} fill sizes="25vw" className="absolute object-cover rounded-md" />
             </div>
-            <div className="flex justify-between gap-4">
+            <div className="flex justify-between gap-4 relative">
                 <span className="font-medium text-nowrap overflow-hidden text-ellipsis">{product.name}</span>
-                <span className="font-semibold">{product.price}$</span>
+                <span className="font-semibold">{Math.round(product.price * (100 - product.discount)) / 100}$</span>
+                {product.discount > 0 && <span className="absolute -top-3 -right-1 text-xs bg-[var(--color-powder-pink)] text-white px-1 rounded-md">-{product.discount}%</span>}
             </div>
-            <div className="text-sm text-[var(--color-muted-green)]">{product.numberInStock > 0 ? 'available' : 'unavailable'}</div>
+            <div className="text-sm text-[var(--color-muted-green)]">{product.category.map((cat) => cat.name).join(', ')}</div>
             <div className="flex items-center justify-between gap-4">
                 <AddToCartBtn />
                 <button type="button" onClick={handleLike} className="hover:text-[var(--color-powder-pink)] cursor-pointer">
