@@ -1,26 +1,40 @@
 "use client";
 import { SignInButton, SignUpButton, SignedIn, SignedOut, UserButton } from '@clerk/nextjs';
 import Image from "next/image";
-import { useState } from "react";
-import { CartModal } from "./CartModal";
+import { useEffect, useState } from "react";
+import { useRouter } from 'next/navigation';
+import { Cart } from "./Cart";
 import useCart from '@/lib/hooks/useCart';
 
 export const NavIcons = () => {
     const cart = useCart();
+    const router = useRouter();
     const [isProfileOpen, setIsProfileOpen] = useState(false);
     const [isCartOpen, setIsCartOpen] = useState(false);
+    const [width, setWidth] = useState(0);
+    const handleResize = () => setWidth(window.innerWidth);
+
+    useEffect(() => {
+        handleResize();
+        window.addEventListener('resize', handleResize);
+        return () => window.removeEventListener('resize', handleResize);
+    }, []);
 
     return (
         <div className="flex items-center gap-4 xl:gap-6 relative">
             <div className="relative cursor-pointer" onClick={() => {
-                setIsCartOpen(!isCartOpen);
-                setIsProfileOpen(false);
+                if (width >= 500) {
+                    setIsCartOpen(!isCartOpen);
+                    setIsProfileOpen(false);
+                } else {
+                    router.push('/cart');
+                }
             }} >
                 <Image src='/cart.svg' alt='profile' width={22} height={22} />
                 <div className="absolute -top-4 -right-4 w-6 h-6 bg-[var(--color-powder-pink)] rounded-full text-sm flex items-center justify-center">{cart.cartItems.length}</div>
             </div>
-            {isCartOpen && (
-                <CartModal />
+            {isCartOpen && width >= 500 && (
+                <Cart className='absolute w-max p-4 top-12 right-0 rounded-md shadow-[0_3px_10px_rgb(0,0,0,0.2)] z-2 bg-white' />
             )}
             <SignedOut>
                 <Image src='/profile.svg' alt='profile' width={22} height={22} className="cursor-pointer" onClick={() => {
