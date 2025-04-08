@@ -11,7 +11,7 @@ const Home = async () => {
       <Slider />
       <div className="mt-24 page-padding">
         <h1 className="text-2xl">New Products</h1>
-        <ProductList products={products} />
+        <ProductList products={products.slice(0, 4)} />
       </div>
       <div className="mt-24">
         <h1 className="text-2xl page-padding mb-12">Categories</h1>

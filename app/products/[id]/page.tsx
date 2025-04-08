@@ -1,5 +1,7 @@
 import { Add } from "@/components/Add";
+import { AddToCartBtn } from "@/components/AddToCartBtn";
 import { CustomizeProduct } from "@/components/CustomizeProduct";
+import Like from "@/components/Like";
 import { ProductImages } from "@/components/ProductImages";
 import { getProductDetails } from "@/lib/action";
 
@@ -27,18 +29,27 @@ const ProductPage = async ({ params }: { params: { id: string } }) => {
                 </div>
                 <hr className="text-[var(--color-muted-green)]" />
                 <CustomizeProduct colors={productDetails.colors} sizes={productDetails.sizes} />
-                <Add numberInStock={productDetails.numberInStock} />
+                <div className="flex flex-col gap-4">
+                    <h4 className="font-medium">Choose a Quantity</h4>
+                    <div className="flex justify-between">
+                        <Add numberInStock={productDetails.numberInStock} />
+                        <div className="flex gap-3">
+                            <AddToCartBtn />
+                            <Like product={productDetails} />
+                        </div>
+                    </div>
+                </div>
                 <hr className="text-[var(--color-muted-green)]" />
                 <div className="text-sm">
                     <h4 className='font-medium mb-4 uppercase'>Description</h4>
                     <div className="flex flex-col gap-2">
                         <div className="flex justify-between">
                             <p>External material</p>
-                            <p>{productDetails.externalMaterial}</p>
+                            <p>{productDetails.externalMaterial.join(', ')}</p>
                         </div>
                         <div className="flex justify-between">
                             <p>Internal material</p>
-                            <p>{productDetails.internalMaterial}</p>
+                            <p>{productDetails.internalMaterial.join(', ')}</p>
                         </div>
                     </div>
                 </div>
