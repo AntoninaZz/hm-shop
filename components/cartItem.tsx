@@ -1,20 +1,27 @@
 import Image from "next/image";
+import { Trash2 } from "lucide-react";
+import useCart from "@/lib/hooks/useCart";
 
-export const CartItem = () => {
+export const CartItem = ({ product, quantity }: { product: ProductType, quantity: number }) => {
+    const cart = useCart();
     return (
         <div className="flex gap-4">
-            <Image src='/logo.jpg' alt='' width={72} height={96} className="object-cover rounded-md" />
+            <Image src={product.media[0]} alt={product.name} width={72} height={96} className="object-cover rounded-md" />
             <div className="flex flex-col justify-between w-full">
                 <div>
                     <div className="flex items-center justify-between gap-8">
-                        <h2 className="font-semibold">Product Name</h2>
-                        <div className="p-1 bg-[var(--color-milk)] rounded-sm">45$</div>
+                        <h2 className="font-semibold">{product.name}</h2>
+                        <div className="p-1 bg-[var(--color-milk)] rounded-sm">{Math.round(product.price * (100 - product.discount)) / 100}$</div>
                     </div>
-                    <p className="text-sm text-[var(--color-muted-green)]">available</p>
+                    <p className="text-xs text-[var(--color-muted-green)]">{product.category.map((cat) => cat.name).join(', ')}</p>
                 </div>
                 <div className="flex justify-between text-sm">
-                    <span className="text-[var(--color-muted-green)]">Qty. 2</span>
-                    <Image src='/bin.svg' alt='remove' width={18} height={21} />
+                    <div className="bg-[var(--color-milk)] px-4 mt-1 rounded-3xl flex items-center justify-between gap-3">
+                        <button onClick={() => { if (quantity > 1) cart.decreaseQuantity(product._id) }} className="cursor-pointer text-xl">-</button>
+                        {quantity}
+                        <button onClick={() => { if (quantity < product.numberInStock) cart.increaseQuantity(product._id) }} className="cursor-pointer text-xl">+</button>
+                    </div>
+                    <Trash2 className="text-[var(--color-powder-pink)] cursor-pointer" onClick={() => cart.removeItem(product._id)} />
                 </div>
             </div>
         </div>

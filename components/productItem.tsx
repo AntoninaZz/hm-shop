@@ -1,6 +1,5 @@
 import Link from "next/link";
 import Image from "next/image";
-import { AddToCartBtn } from "./AddToCartBtn";
 import Like from "./Like";
 
 interface ProductItemProps {
@@ -20,7 +19,7 @@ export const ProductItem: React.FC<ProductItemProps> = ({ product }) => {
             </div>
             <div className="text-sm text-[var(--color-muted-green)]">{product.category.map((cat) => cat.name).join(', ')}</div>
             <div className="flex items-center justify-between gap-4">
-                <AddToCartBtn />
+            <button className="w-32 rounded-3xl ring-1 py-2 px-4 text-xs hover:bg-[var(--color-muted-green)] hover:text-white cursor-pointer disabled:cursor-not-allowed disabled:contrast-150">Add to Cart</button>
                 <Like product={product} />
             </div>
         </Link>

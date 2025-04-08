@@ -1,4 +1,4 @@
-import { getCategories } from "@/lib/action";
+import { getCategories } from "@/lib/actions/action";
 import { CategoryItem } from "./CategoryItem";
 
 export const CategoryList = async () => {

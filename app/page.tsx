@@ -1,7 +1,7 @@
 import { CategoryList } from "@/components/CategoryList";
 import { ProductList } from "@/components/ProductList";
 import { Slider } from "@/components/Slider";
-import { getProducts } from "@/lib/action";
+import { getProducts } from "@/lib/actions/action";
 
 const Home = async () => {
   const products = await getProducts();

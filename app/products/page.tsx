@@ -2,7 +2,7 @@ import { Filter } from "@/components/Filter";
 import { ProductList } from "@/components/ProductList";
 import ProductsHeader from "@/components/ProductsHeader";
 import { SearchBar } from "@/components/SearchBar";
-import { getCategories, getProducts } from "@/lib/action";
+import { getCategories, getProducts } from "@/lib/actions/action";
 
 const ProductsPage = async () => {
     const categories = await getCategories();
