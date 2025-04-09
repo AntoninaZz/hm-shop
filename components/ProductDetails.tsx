@@ -44,11 +44,11 @@ const ProductDetails = ({ productDetails }: { productDetails: ProductType }) => 
                         <ul className="flex items-center gap-3">
                             {productDetails.colors.map((color, i) => {
                                 if (i === chosenColor) {
-                                    return (<li key={i} className={`w-8 h-8 rounded-full ring-1 ring-[var(--color-light-beige)] cursor-pointer relative bg-[${color}]`}>
+                                    return (<li key={i} style={{ background: `${color}` }} className={`w-8 h-8 rounded-full ring-1 ring-[var(--color-light-beige)] cursor-pointer relative`}>
                                         <div className="absolute w-10 h-10 rounded-full ring-2 ring-[var(--color-muted-green)] top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2" />
                                     </li>);
                                 } else {
-                                    return <li key={i} onClick={() => setChosenColor(i)} className={`w-8 h-8 rounded-full ring-1 ring-[var(--color-light-beige)] cursor-pointer relative bg-[${color}]`}></li>
+                                    return <li key={i} style={{ background: `${color}` }} onClick={() => setChosenColor(i)} className={`w-8 h-8 rounded-full ring-1 ring-[var(--color-light-beige)] cursor-pointer relative`}></li>
                                 }
                             })}
                         </ul>

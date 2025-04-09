@@ -13,12 +13,14 @@ const Like = ({ product }: { product: ProductType }) => {
 
     const getUser = async () => {
         try {
-            setLoading(true);
-            const res = await fetch('/api/users');
-            const data = await res.json();
-            setSignedInUser(data);
-            setIsLiked(data.wishlist.includes(product._id));
-            setLoading(false);
+            if (user.isSignedIn) {
+                setLoading(true);
+                const res = await fetch('/api/users');
+                const data = await res.json();
+                setSignedInUser(data);
+                setIsLiked(data.wishlist.includes(product._id));
+                setLoading(false);
+            }
         } catch (error) {
             console.log("[getUser]", error);
         }

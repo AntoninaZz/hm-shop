@@ -1,14 +1,15 @@
 import { CategoryList } from "@/components/CategoryList";
 import { ProductList } from "@/components/ProductList";
 import { Slider } from "@/components/Slider";
-import { getProducts } from "@/lib/actions/action";
+import { getBanners, getProducts } from "@/lib/actions/action";
 
 const Home = async () => {
   const products = await getProducts();
+  const banners = await getBanners();
 
   return (
     <div>
-      <Slider />
+      <Slider slides={banners} />
       <div className="mt-24 page-padding">
         <h1 className="text-2xl">New Products</h1>
         <ProductList products={products.slice(0, 4)} />
