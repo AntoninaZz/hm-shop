@@ -18,7 +18,7 @@ export const Slider = ({ slides }: { slides: BannerType[] }) => {
         <div className="h-[calc(100vh-80px)] overflow-hidden">
             <div style={{ transform: `translateX(-${current}00vw)` }} className={`w-max h-full flex transition-all ease-in-out duration-1000`}>
                 {slides.map((slide) => (
-                    <div key={slide._id} style={{ background: `linear-gradient(45deg, var(${gradientColors[slide.description.length % 4]}), var(${gradientColors[3 - slide.description.length % 4]}))` }} className={`w-screen h-full flex flex-col gap-16 xl:flex-row`}>
+                    <div key={slide._id} style={{ background: `linear-gradient(45deg, var(${gradientColors[3 - slide.description.length % 4]}), var(${gradientColors[slide.description.length % 4]}))` }} className={`w-screen h-full flex flex-col gap-16 xl:flex-row`}>
                         <div className="h-1/2 xl:h-full xl:w-1/2 flex flex-col items-center justify-center gap-8 2xl:gap-12 text-center px-8">
                             <h1 className="text-5xl lg:text-6xl 2xl:text-8xl font-semibold">{slide.title}</h1>
                             <h2 className="text-xl lg:text-3xl 2xl:text-5xl">{slide.description}</h2>
