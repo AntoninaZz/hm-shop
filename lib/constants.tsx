@@ -11,4 +11,12 @@ export const navLinks = [
         url: "/about",
         label: "About",
     },
+    {
+        url: "/wishlist",
+        label: "Wishlist",
+    },
+    {
+        url: "/orders",
+        label: "Orders",
+    },
 ];
