@@ -2,7 +2,12 @@
 import { useSearchParams } from 'next/navigation';
 import { ProductItem } from "./ProductItem";
 
-export const ProductList = ({ products }: { products: ProductType[] }) => {
+interface ProductListProps {
+    products: ProductType[];
+    updateSignInUser?: (updatedUser: UserType) => void;
+}
+
+export const ProductList = ({ products, updateSignInUser }: ProductListProps) => {
     const searchParams = useSearchParams();
     const category = searchParams.get('cat');
     if (category) {
@@ -11,7 +16,7 @@ export const ProductList = ({ products }: { products: ProductType[] }) => {
     return (
         <div className="mt-12 flex gap-x-8 gap-y-16 flex-wrap">
             {!products || products.length === 0 ? <p>No products found</p> :
-                products.map((product: ProductType) => <ProductItem key={product._id} product={product} />)}
+                products.map((product: ProductType) => <ProductItem key={product._id} product={product} updateSignInUser={updateSignInUser} />)}
         </div>
     );
 }

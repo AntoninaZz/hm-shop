@@ -4,8 +4,10 @@ import Like from "./Like";
 
 interface ProductItemProps {
     product: ProductType;
+    updateSignInUser?: (updatedUser: UserType) => void;
 }
-export const ProductItem: React.FC<ProductItemProps> = ({ product }) => {
+
+export const ProductItem: React.FC<ProductItemProps> = ({ product, updateSignInUser }) => {
     return (
         <Link href={`products/${product._id}`} className="w-full flex flex-col gap-4 md:w-[45%] lg:w-[22%]">
             <div className="relative w-full h-80">
@@ -19,8 +21,8 @@ export const ProductItem: React.FC<ProductItemProps> = ({ product }) => {
             </div>
             <div className="text-sm text-[var(--color-muted-green)]">{product.category.map((cat) => cat.name).join(', ')}</div>
             <div className="flex items-center justify-between gap-4">
-            <button className="w-32 rounded-3xl ring-1 py-2 px-4 text-xs hover:bg-[var(--color-muted-green)] hover:text-white cursor-pointer disabled:cursor-not-allowed disabled:contrast-150">Add to Cart</button>
-                <Like product={product} />
+                <button className="w-32 rounded-3xl ring-1 py-2 px-4 text-xs hover:bg-[var(--color-muted-green)] hover:text-white cursor-pointer disabled:cursor-not-allowed disabled:contrast-150">Add to Cart</button>
+                <Like product={product} updateSignInUser={updateSignInUser} />
             </div>
         </Link>
     );

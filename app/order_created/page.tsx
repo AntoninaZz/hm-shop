@@ -16,7 +16,7 @@ const OrderCreatedPage = () => {
     const sign_string = process.env.NEXT_PUBLIC_LIQPAY_PRIVATE_KEY + data + process.env.NEXT_PUBLIC_LIQPAY_PRIVATE_KEY;
     const signature = btoa(sha3_256(sign_string));
     return (
-        <div className='h-screen flex flex-col justify-center items-center gap-5'>
+        <div className='h-screen flex flex-col justify-center items-center gap-5 page-padding'>
             <p className='text-xl'>Замовлення №{orderId} успішно зареєстровано</p>
             <p className='text-[var(--color-muted-green)]'>Оплатіть замовлення і ми відправимо його Вам найближчим часом</p>
 

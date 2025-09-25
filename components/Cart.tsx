@@ -32,7 +32,6 @@ export const Cart: React.FC<CartProps> = ({ className }) => {
                     body: JSON.stringify({ cartItems: cart.cartItems, customerInfo: customer, orderDetails: { shippingAddress: address, comment }, totalAmount: subtotalRounded }),
                 });
                 const order = await res.json();
-                console.log(order);
                 window.location.href = `/order_created?orderId=${order._id}`;
             }
         } catch (error) {
