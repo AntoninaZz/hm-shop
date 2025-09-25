@@ -39,3 +39,20 @@ type UserType = {
     createdAt: string;
     updatedAt: string;
 };
+
+type OrderType = {
+    _id: string;
+    customerClerkId: string;
+    products: OrderItemType[];
+    totalAmount: number;
+    shippingAddress: string;
+    comment: string;
+    createdAt: Date;
+};
+
+type OrderItemType = {
+    product: ProductType;
+    color: string;
+    quantity: number;
+    size: string;
+}
