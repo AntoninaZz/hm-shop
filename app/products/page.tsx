@@ -2,11 +2,17 @@ import { Filter } from "@/components/Filter";
 import { ProductList } from "@/components/ProductList";
 import ProductsHeader from "@/components/ProductsHeader";
 import { SearchBar } from "@/components/SearchBar";
-import { getCategories, getProducts } from "@/lib/actions/action";
+import { getCategories, getProducts, getSearch } from "@/lib/actions/action";
 
-const ProductsPage = async () => {
+const ProductsPage = async ({ searchParams }: { searchParams: { search: string } }) => {
+    const search = searchParams.search;
+    let products: ProductType[];
+    if (search) {
+        products = await getSearch(search);
+    } else {
+        products = await getProducts();
+    }
     const categories = await getCategories();
-    const products = await getProducts();
     return (
         <div className="page-padding">
             <Filter categories={categories} />
