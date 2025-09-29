@@ -8,15 +8,15 @@ export const navLinks = [
         label: "Shop",
     },
     {
-        url: "/about",
-        label: "About",
-    },
-    {
         url: "/wishlist",
         label: "Wishlist",
     },
     {
         url: "/orders",
         label: "Orders",
+    },
+    {
+        url: "/about",
+        label: "About",
     },
 ];

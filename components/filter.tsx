@@ -12,12 +12,20 @@ export const Filter: React.FC<FilterProps> = ({ categories }) => {
                     <option>Category</option>
                     {categories.map((category: CategoryType) => (<option key={category._id} value={category._id} >{category.name}</option>))}
                 </select>}
-            <select name="sort" id="sort" className="py-2 px-4 rounded-2xl text-xs font-medium bg-[var(--color-milk)] outline-0">
+            <select name="sort" id="sort" onChange={(e) => {
+                const url = new URL(window.location.href);
+                if (url.searchParams.has("sort")) {
+                    url.searchParams.set("sort", e.target.value)
+                } else {
+                    url.searchParams.append("sort", e.target.value);
+                }
+                window.location.href = url.toString();
+            }} className="py-2 px-4 rounded-2xl text-xs font-medium bg-[var(--color-milk)] outline-0" >
                 <option>Sort By</option>
-                <option value='cheap'>Price (low to high)</option>
-                <option value='expensive'>Price (high to low)</option>
-                <option value='newest'>Newest</option>
-                <option value='oldest'>Oldest</option>
+                <option value='price-asc'>Price (low to high)</option>
+                <option value='price-desc'>Price (high to low)</option>
+                <option value='time-desc'>Newest</option>
+                <option value='time-asc'>Oldest</option>
             </select>
         </div>
     );

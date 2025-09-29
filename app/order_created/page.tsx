@@ -17,8 +17,8 @@ const OrderCreatedPage = () => {
     const signature = btoa(sha3_256(sign_string));
     return (
         <div className='h-screen flex flex-col justify-center items-center gap-5 page-padding'>
-            <p className='text-xl'>Замовлення №{orderId} успішно зареєстровано</p>
-            <p className='text-[var(--color-muted-green)]'>Оплатіть замовлення і ми відправимо його Вам найближчим часом</p>
+            <p className='text-xl'>Your order №{orderId} is successfully registered</p>
+            <p className='text-[var(--color-muted-green)]'>Pay for your order and it will ne delivered to you as soon as possible.</p>
 
             <form method="POST" action="https://www.liqpay.ua/api/3/checkout" accept-charset="utf-8">
                 <input type="hidden" name="data" value={data} />
@@ -26,7 +26,7 @@ const OrderCreatedPage = () => {
                 <input type="image" src="//static.liqpay.ua/buttons/payUk.png" />
             </form>
 
-            <p className='text-[var(--color-muted-green)]'>Дякуємо за покупку у нашому магазині!</p>
+            <p className='text-[var(--color-muted-green)]'>Thank you for shopping at our store!</p>
         </div>
     )
 }

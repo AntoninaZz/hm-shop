@@ -42,33 +42,29 @@ export const Cart: React.FC<CartProps> = ({ className }) => {
     return (
         <div className={`flex gap-6`}>
             <div className={`flex flex-col gap-6 ${className}`}>
-                <h1 className="text-xl">Кошик</h1>
+                <h1 className="text-xl">Cart</h1>
                 {cart.cartItems.length === 0 ?
-                    <p className="text-sm text-[var(--color-muted-green)]">У кошику немає товарів :(</p> :
+                    <p className="text-sm text-[var(--color-muted-green)]">Your cart is empty :(</p> :
                     <div className="flex flex-col gap-8">
                         {cart.cartItems.map((cartItem) => <CartItem key={cartItem.item._id} product={cartItem.item} quantity={cartItem.quantity} />)}
                     </div>
                 }
                 <div>
                     <div className="flex items-center justify-between font-semibold">
-                        <span>Сума</span>
+                        <span>Total</span>
                         <span>{subtotalRounded}₴</span>
                     </div>
                     <p className="text-[var(--color-muted-green)] text-sm mt-2 mb-4">
-                        Доставка здійснюється за тарифами перевізника.
+                        Delivery is carried out according to the carrier's rates.
                     </p>
-                    {window.location.href.includes('/cart') ? '' : <div className="flex justify-between text-sm">
-                        <button onClick={() => window.location.href = '/cart'} className="rounded-md py-3 px-4 ring-1 ring-[var(--color-muted-green)] hover:bg-[var(--color-muted-green)] hover:text-white cursor-pointer">Переглянути кошик</button>
-                        <button className="rounded-md py-3 px-4 bg-[var(--color-olive-gray)] hover:bg-[var(--color-muted-green)] cursor-pointer text-[var(--background)]" onClick={placeOrder}>Оформити замовлення</button>
-                    </div>}
                 </div>
             </div>
-            {window.location.href.includes('/cart') ? <div className="w-full page-padding">
+            <div className="w-full page-padding">
                 <div className='flex flex-col gap-6'>
-                    <h1 className="text-xl">Деталі замовлення</h1>
-                    <input type="text" name="firstName" placeholder="Ім'я" className="flex-1 outline-none placeholder-[var(--color-muted-green)]" onChange={(e) => setFirstName(e.target.value)} required />
-                    <input type="text" name="lastName" placeholder="Прізвище" className="flex-1 outline-none placeholder-[var(--color-muted-green)]" onChange={(e) => setLastName(e.target.value)} />
-                    <input type="tel" name="phone" placeholder="тел. (XXX) XXX-XXXX" className="flex-1 outline-none placeholder-[var(--color-muted-green)]"
+                    <h1 className="text-xl">Order Details</h1>
+                    <input type="text" name="firstName" placeholder="First Name" className="flex-1 outline-none placeholder-[var(--color-muted-green)]" onChange={(e) => setFirstName(e.target.value)} required />
+                    <input type="text" name="lastName" placeholder="Last Name" className="flex-1 outline-none placeholder-[var(--color-muted-green)]" onChange={(e) => setLastName(e.target.value)} required />
+                    <input type="tel" name="phone" placeholder="Phone" className="flex-1 outline-none placeholder-[var(--color-muted-green)]"
                         onChange={(e) => {
                             let value = e.target.value.replace(/\D/g, ''); // Remove non-digits
                             // Apply masking based on the number of digits
@@ -85,11 +81,11 @@ export const Cart: React.FC<CartProps> = ({ className }) => {
                             e.target.value = value;
                             setPhone(e.target.value);
                         }} required />
-                    <input type="text" name="address" placeholder="Відділення НП" className="flex-1 outline-none placeholder-[var(--color-muted-green)]" onChange={(e) => setAddress(e.target.value)} required />
-                    <input type="text" name="comment" placeholder="Коментар до замовлення" className="flex-1 outline-none placeholder-[var(--color-muted-green)]" onChange={(e) => setComment(e.target.value)} />
-                    <button type="submit" className="rounded-md py-3 px-4 bg-[var(--color-olive-gray)] hover:bg-[var(--color-muted-green)] cursor-pointer text-[var(--background)]" onClick={placeOrder}>Оформити замовлення</button>
+                    <input type="text" name="address" placeholder="Nova Poshta post office number" className="flex-1 outline-none placeholder-[var(--color-muted-green)]" onChange={(e) => setAddress(e.target.value)} required />
+                    <input type="text" name="comment" placeholder="Comment" className="flex-1 outline-none placeholder-[var(--color-muted-green)]" onChange={(e) => setComment(e.target.value)} />
+                    <button type="submit" className="rounded-md py-3 px-4 bg-[var(--color-olive-gray)] hover:bg-[var(--color-muted-green)] cursor-pointer text-[var(--background)]" onClick={placeOrder}>Place Order</button>
                 </div>
-            </div> : ''}
+            </div>
         </div>
     );
 }
