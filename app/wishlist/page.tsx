@@ -58,3 +58,4 @@ const WishlistPage = () => {
 }
 
 export default WishlistPage;
+export const dynamic = "force-dynamic";

@@ -24,3 +24,4 @@ const ProductsPage = async ({ searchParams }: { searchParams: { search: string }
 }
 
 export default ProductsPage;
+export const dynamic = "force-dynamic";

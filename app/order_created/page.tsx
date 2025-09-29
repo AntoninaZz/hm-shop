@@ -32,3 +32,4 @@ const OrderCreatedPage = () => {
 }
 
 export default OrderCreatedPage;
+export const dynamic = "force-dynamic";

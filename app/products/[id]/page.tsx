@@ -17,3 +17,4 @@ const ProductPage = async ({ params }: { params: { id: string } }) => {
 }
 
 export default ProductPage;
+export const dynamic = "force-dynamic";
