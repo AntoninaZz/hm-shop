@@ -10,7 +10,7 @@ const ProductPage = async ({ params }: { params: { id: string } }) => {
             <ProductDetails productDetails={productDetails} />
             <div className="mt-24 page-padding">
                 <h1 className="text-2xl">Related Products</h1>
-                <ProductList products={relatedProducts} />
+                <ProductList products={relatedProducts.slice(0, 4)} />
             </div>
         </>
     );
