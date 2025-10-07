@@ -2,7 +2,6 @@
 import { useState } from 'react';
 import { useUser } from "@clerk/nextjs";
 import { useRouter } from "next/navigation";
-import { toast } from 'react-hot-toast';
 import useCart from "@/lib/hooks/useCart";
 import { CartItem } from "./CartItem";
 
@@ -23,19 +22,18 @@ export const Cart: React.FC<CartProps> = ({ className }) => {
     const subtotal = cart.cartItems.reduce((acc, cartItem) => acc + cartItem.item.price * cartItem.quantity * (100 - cartItem.item.discount) / 100, 0);
     const subtotalRounded = parseFloat(subtotal.toFixed(2));
 
-    const placeOrder = async () => {
+    const placeOrder = async (e: React.FormEvent) => {
+        e.preventDefault();
         try {
             if (!user) {
                 router.push("sign-in");
-            } else if (!(firstName.length > 0) || !(lastName.length > 0) || !(phone.length > 0) || !(address.length > 0)) {
-                toast.error('Fill in your delivery information');
             } else {
                 const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/order`, {
                     method: "POST",
                     body: JSON.stringify({ cartItems: cart.cartItems, customerInfo: customer, orderDetails: { shippingAddress: address, comment }, totalAmount: subtotalRounded }),
                 });
                 const order = await res.json();
-                window.location.href = `/order_created?orderId=${order._id}`;
+                router.push(`/order_created?orderId=${order._id}`);
             }
         } catch (error) {
             console.log("[checkout_POST]", error);
@@ -63,7 +61,7 @@ export const Cart: React.FC<CartProps> = ({ className }) => {
                 </div>
             </div>
             <div className="w-full page-padding">
-                <form className='flex flex-col gap-6'>
+                <form className='flex flex-col gap-6' onSubmit={placeOrder}>
                     <h1 className="text-xl">Order Details</h1>
                     <input type="text" name="firstName" placeholder="First Name" className="flex-1 outline-none placeholder-[var(--color-muted-green)]" onChange={(e) => setFirstName(e.target.value)} required />
                     <input type="text" name="lastName" placeholder="Last Name" className="flex-1 outline-none placeholder-[var(--color-muted-green)]" onChange={(e) => setLastName(e.target.value)} required />
@@ -86,7 +84,7 @@ export const Cart: React.FC<CartProps> = ({ className }) => {
                         }} required />
                     <input type="text" name="address" placeholder="Nova Poshta post office number" className="flex-1 outline-none placeholder-[var(--color-muted-green)]" onChange={(e) => setAddress(e.target.value)} required />
                     <input type="text" name="comment" placeholder="Comment" className="flex-1 outline-none placeholder-[var(--color-muted-green)]" onChange={(e) => setComment(e.target.value)} />
-                    <button type="submit" className="rounded-md py-3 px-4 bg-[var(--color-olive-gray)] hover:bg-[var(--color-muted-green)] cursor-pointer text-[var(--background)]" onClick={placeOrder}>Place Order</button>
+                    <button type="submit" className="rounded-md py-3 px-4 bg-[var(--color-olive-gray)] hover:bg-[var(--color-muted-green)] cursor-pointer text-[var(--background)]">Place Order</button>
                 </form>
             </div>
         </div>
