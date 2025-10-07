@@ -18,7 +18,7 @@ const OrderCreatedPage = () => {
     return (
         <div className='h-screen flex flex-col justify-center items-center gap-5 page-padding'>
             <p className='text-xl'>Your order №{orderId} is successfully registered</p>
-            <p className='text-[var(--color-muted-green)]'>Pay for your order and it will ne delivered to you as soon as possible.</p>
+            <p className='text-[var(--color-muted-green)]'>Pay for your order and it will be delivered to you as soon as possible.</p>
 
             <form method="POST" action="https://www.liqpay.ua/api/3/checkout" accept-charset="utf-8">
                 <input type="hidden" name="data" value={data} />
