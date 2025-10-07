@@ -36,6 +36,8 @@ const ProductsPage = async ({ searchParams }: { searchParams: { search: string, 
                 break;
         }
     }
+    products = products.sort((a, b) => a.numberInStock == 0 ? 1 : b.numberInStock == 0 ? -1 : 0);
+    
     return (
         <div className="page-padding">
             <Filter categories={categories} />
