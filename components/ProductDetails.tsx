@@ -78,7 +78,7 @@ const ProductDetails = ({ productDetails }: { productDetails: ProductType }) => 
                             <div className="text-xs">Only <span className="text-[var(--color-muted-green)]">{productDetails.numberInStock} items</span> left! <br /> {"Don't"} miss it</div>
                         </div>
                         <div className="flex gap-3">
-                            <button onClick={() => { cart.addItem({ item: productDetails, quantity: quantity, color: productDetails.colors[chosenColor], size: productDetails.sizes[chosenSize], }) }} className="w-32 rounded-3xl ring-1 py-2 px-4 text-xs hover:bg-[var(--color-muted-green)] hover:text-white cursor-pointer disabled:cursor-not-allowed disabled:contrast-150">
+                            <button disabled={!(productDetails.numberInStock > 0)} onClick={() => { cart.addItem({ item: productDetails, quantity: quantity, color: productDetails.colors[chosenColor], size: productDetails.sizes[chosenSize], }) }} className="w-32 rounded-3xl ring-1 py-2 px-4 text-xs hover:bg-[var(--color-muted-green)] hover:text-white cursor-pointer disabled:cursor-not-allowed disabled:contrast-150">
                                 Add to Cart
                             </button>
                             <Like product={productDetails} />
