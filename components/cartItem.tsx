@@ -6,7 +6,7 @@ export const CartItem = ({ product, quantity }: { product: ProductType, quantity
     const cart = useCart();
     return (
         <div className="flex gap-4">
-            <Image src={product.media[0]} alt={product.name} width={72} height={96} className="object-cover rounded-md" />
+            <Image src={product.media[0]} alt={product.name} width={72} height={96} className="object-cover rounded-md aspect-square" />
             <div className="flex flex-col justify-between w-full">
                 <div>
                     <div className="flex items-center justify-between gap-8">
