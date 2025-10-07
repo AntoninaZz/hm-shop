@@ -2,6 +2,7 @@
 import { useState } from 'react';
 import { useUser } from "@clerk/nextjs";
 import { useRouter } from "next/navigation";
+import { toast } from 'react-hot-toast';
 import useCart from "@/lib/hooks/useCart";
 import { CartItem } from "./CartItem";
 
@@ -26,6 +27,8 @@ export const Cart: React.FC<CartProps> = ({ className }) => {
         try {
             if (!user) {
                 router.push("sign-in");
+            } else if (!(firstName.length > 0) || !(lastName.length > 0) || !(phone.length > 0) || !(address.length > 0)) {
+                toast.error('Fill in your delivery information');
             } else {
                 const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/order`, {
                     method: "POST",
@@ -60,7 +63,7 @@ export const Cart: React.FC<CartProps> = ({ className }) => {
                 </div>
             </div>
             <div className="w-full page-padding">
-                <div className='flex flex-col gap-6'>
+                <form className='flex flex-col gap-6'>
                     <h1 className="text-xl">Order Details</h1>
                     <input type="text" name="firstName" placeholder="First Name" className="flex-1 outline-none placeholder-[var(--color-muted-green)]" onChange={(e) => setFirstName(e.target.value)} required />
                     <input type="text" name="lastName" placeholder="Last Name" className="flex-1 outline-none placeholder-[var(--color-muted-green)]" onChange={(e) => setLastName(e.target.value)} required />
@@ -84,7 +87,7 @@ export const Cart: React.FC<CartProps> = ({ className }) => {
                     <input type="text" name="address" placeholder="Nova Poshta post office number" className="flex-1 outline-none placeholder-[var(--color-muted-green)]" onChange={(e) => setAddress(e.target.value)} required />
                     <input type="text" name="comment" placeholder="Comment" className="flex-1 outline-none placeholder-[var(--color-muted-green)]" onChange={(e) => setComment(e.target.value)} />
                     <button type="submit" className="rounded-md py-3 px-4 bg-[var(--color-olive-gray)] hover:bg-[var(--color-muted-green)] cursor-pointer text-[var(--background)]" onClick={placeOrder}>Place Order</button>
-                </div>
+                </form>
             </div>
         </div>
     );
