@@ -2,8 +2,10 @@
 import { useState } from 'react';
 import { useUser } from "@clerk/nextjs";
 import { useRouter } from "next/navigation";
+import { toast } from 'react-hot-toast';
 import useCart from "@/lib/hooks/useCart";
 import { CartItem } from "./CartItem";
+import DeliveryField from './DeliveryField';
 
 interface CartProps {
     className?: string;
@@ -24,6 +26,10 @@ export const Cart: React.FC<CartProps> = ({ className }) => {
 
     const placeOrder = async (e: React.FormEvent) => {
         e.preventDefault();
+        if(phone.length < 14) {
+            toast.error("Your phone number is missing some digits");
+            return;
+        }
         try {
             if (!user) {
                 router.push("sign-in");
@@ -82,9 +88,12 @@ export const Cart: React.FC<CartProps> = ({ className }) => {
                             e.target.value = value;
                             setPhone(e.target.value);
                         }} required />
-                    <input type="text" name="address" placeholder="Nova Poshta post office number" className="flex-1 outline-none placeholder-[var(--color-muted-green)]" onChange={(e) => setAddress(e.target.value)} required />
+                    <div className='relative'>
+                        <input type="text" name="address" value={address} onChange={() => { }} required className='absolute outline-0 text-white' />
+                        <DeliveryField value={address} onChange={setAddress} />
+                    </div>
                     <input type="text" name="comment" placeholder="Comment" className="flex-1 outline-none placeholder-[var(--color-muted-green)]" onChange={(e) => setComment(e.target.value)} />
-                    <button type="submit" className="rounded-md py-3 px-4 bg-[var(--color-olive-gray)] hover:bg-[var(--color-muted-green)] cursor-pointer text-[var(--background)]">Place Order</button>
+                    <button disabled={cart.cartItems.length == 0} type="submit" className="rounded-md py-3 px-4 bg-[var(--color-olive-gray)] hover:bg-[var(--color-muted-green)] cursor-pointer text-[var(--background)]">Place Order</button>
                 </form>
             </div>
         </div>
