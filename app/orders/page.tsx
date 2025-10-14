@@ -6,10 +6,10 @@ const OrdersPage = async () => {
     const { userId } = await auth();
     const orders = await getOrders(userId as string);
     return (
-        <div className="page-padding">
+        <div className="page-padding min-h-[400px]">
             <h1 className="mt-12 text-xl font-semibold mb-5">Your Orders</h1>
             {(!orders || orders.length === 0) && <p className="text-sm text-[var(--color-muted-green)] mt-5">You have no orders yet.</p>}
-            <div className="flex flex-col max-sm:gap-10">
+            {orders.length > 0 && <div className="flex flex-col max-sm:gap-10">
                 <div className="flex justify-between gap-2 p-4 bg-[var(--color-muted-green)] rounded-md max-sm:hidden">
                     <p className="font-bold w-1/3">Order ID</p>
                     <p className="font-bold w-1/3 text-center">Products</p>
@@ -36,7 +36,7 @@ const OrdersPage = async () => {
                         <p className="sm:w-1/3 text-center sm:text-right"><span className="font-bold sm:hidden">Total Amount: </span>{order.totalAmount.toFixed(2)}₴</p>
                     </div>
                 )}
-            </div>
+            </div>}
         </div>
     )
 }

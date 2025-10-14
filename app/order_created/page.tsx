@@ -47,7 +47,7 @@ const OrderCreatedPage = () => {
     if (!liqpayData) return <Loader />;
 
     return (
-        <div className='h-screen max-h-[400px] flex flex-col justify-center items-center gap-5 page-padding'>
+        <div className='min-h-[400px] flex flex-col justify-center items-center gap-5 page-padding'>
             <p className='text-xl'>Your order №{orderId} is successfully registered</p>
             <p className='text-[var(--color-muted-green)]'>Pay for your order and we will send it to you as soon as possible.</p>
             <form method="POST" action="https://www.liqpay.ua/api/3/checkout" accept-charset="utf-8">

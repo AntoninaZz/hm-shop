@@ -2,7 +2,7 @@ import Link from "next/link";
 
 const SuccessfulPaymentPage = () => {
     return (
-        <div className='h-screen max-h-[400px] flex flex-col justify-center items-center gap-5 page-padding'>
+        <div className='min-h-[400px] flex flex-col justify-center items-center gap-5 page-padding'>
             <p className='text-xl'>Successful Payment</p>
             <p className='text-[var(--color-muted-green)] text-center'>Thank you for shopping at our store!
                 <br />We will send you your order as soon as possible.</p>
