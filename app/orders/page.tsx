@@ -24,7 +24,7 @@ const OrdersPage = async () => {
                                     <Image src={item.product.media[0]} alt={item.product.name} width={100} height={100} className="w-18 h-18 object-cover rounded-md" />
                                     <div className="flex flex-col justify-between">
                                         <p>{item.product.name}</p>
-                                        <p className="text-sm">{parseFloat((item.product.price * (100 - item.product.discount) / 100).toFixed(2))}₴{item.quantity > 1 ? ' x ' + item.quantity : ''}</p>
+                                        <p className="text-sm">{Math.round(item.product.price * (100 - item.product.discount) / 100).toFixed(2)}₴{item.quantity > 1 ? ' x ' + item.quantity : ''}</p>
                                         <p className="flex items-center gap-2 text-sm text-[var(--color-muted-green)]">
                                             {item.color && <div className="w-5 h-5 rounded-full" style={{ backgroundColor: item.color }}></div>}
                                             {item.size && <span>{item.size}</span>}
@@ -33,7 +33,7 @@ const OrdersPage = async () => {
                                 </div>
                             )}
                         </div>
-                        <p className="sm:w-1/3 text-center sm:text-right"><span className="font-bold sm:hidden">Total Amount: </span>{order.totalAmount}₴</p>
+                        <p className="sm:w-1/3 text-center sm:text-right"><span className="font-bold sm:hidden">Total Amount: </span>{order.totalAmount.toFixed(2)}₴</p>
                     </div>
                 )}
             </div>

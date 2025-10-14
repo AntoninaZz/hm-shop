@@ -16,7 +16,7 @@ export const ProductItem: React.FC<ProductItemProps> = ({ product, updateSignInU
             </div>
             <div className="flex justify-between gap-4 relative">
                 <span className="font-medium text-nowrap overflow-hidden text-ellipsis">{product.name}</span>
-                <span className="font-semibold">{Math.round(product.price * (100 - product.discount)) / 100}₴</span>
+                <span className="font-semibold">{(Math.round(product.price * (100 - product.discount)) / 100).toFixed(2)}₴</span>
                 {product.discount > 0 && <span className="absolute -top-3 -right-1 text-xs bg-[var(--color-powder-pink)] text-white px-1 rounded-md">-{product.discount}%</span>}
             </div>
             <div className="text-sm text-[var(--color-muted-green)]">{product.category.map((cat) => cat.name).join(', ')}</div>

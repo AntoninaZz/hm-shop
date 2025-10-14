@@ -11,7 +11,7 @@ export const CartItem = ({ product, quantity }: { product: ProductType, quantity
                 <div>
                     <div className="flex items-center justify-between gap-8">
                         <h2 className="font-semibold">{product.name}</h2>
-                        <div className="p-1 bg-[var(--color-milk)] rounded-sm">{Math.round(product.price * (100 - product.discount)) / 100}$</div>
+                        <div className="p-1 bg-[var(--color-milk)] rounded-sm">{(Math.round(product.price * (100 - product.discount)) / 100).toFixed(2)}₴</div>
                     </div>
                     <p className="text-xs text-[var(--color-muted-green)]">{product.category.map((cat) => cat.name).join(', ')}</p>
                 </div>

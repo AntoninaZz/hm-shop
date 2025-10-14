@@ -59,7 +59,7 @@ export const Cart: React.FC<CartProps> = ({ className }) => {
                 <div>
                     <div className="flex items-center justify-between font-semibold">
                         <span>Total</span>
-                        <span>{subtotalRounded}₴</span>
+                        <span>{subtotalRounded.toFixed(2)}₴</span>
                     </div>
                     <p className="text-[var(--color-muted-green)] text-sm mt-2 mb-4">
                         Delivery is carried out according to the carrier's rates.
