@@ -47,7 +47,7 @@ export const Cart: React.FC<CartProps> = ({ className }) => {
     }
 
     return (
-        <div className={`flex gap-6`}>
+        <div className={`flex gap-6 flex-col sm:flex-row`}>
             <div className={`flex flex-col gap-6 ${className}`}>
                 <h1 className="text-xl">Cart</h1>
                 {cart.cartItems.length === 0 ?

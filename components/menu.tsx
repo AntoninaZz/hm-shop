@@ -11,7 +11,7 @@ export const Menu = () => {
     return <div>
         <Image src="/menu.svg" alt='menu' width={28} height={28} className="cursor-pointer" onClick={() => setOpen(!open)} />
         {open && (
-            <div className="absolute top-27 right-0 w-1/2 h-[calc(100vh-108px)] flex flex-col items-center gap-y-8 bg-white z-3">
+            <div className="absolute top-20 sm:top-27 right-0 w-2/3 h-[calc(100vh-80px)] flex flex-col items-center gap-y-8 pt-8 bg-white z-3">
                 <NavIcons />
                 <Links />
             </div>

@@ -33,7 +33,7 @@ const ProductDetails = ({ productDetails }: { productDetails: ProductType }) => 
                 <div className="flex items-center gap-4">
                     {productDetails.discount > 0 && (<div className="relative">
                         <h3 className="text-xl text-[var(--color-powder-pink)] line-through">{productDetails.price}₴</h3>
-                        <p className="absolute left-10 bottom-5 rounded-md px-1 bg-[var(--color-powder-pink)] text-white">-{productDetails.discount}%</p>
+                        <p className="absolute left-6 bottom-6 rounded-md px-1 bg-[var(--color-powder-pink)] text-white">-{productDetails.discount}%</p>
                     </div>)}
                     <h2 className="font-medium text-2xl">{(Math.round(productDetails.price * (100 - productDetails.discount)) / 100).toFixed(2)}₴</h2>
                 </div>
@@ -68,7 +68,7 @@ const ProductDetails = ({ productDetails }: { productDetails: ProductType }) => 
                 </div>
                 <div className="flex flex-col gap-4">
                     <h4 className="font-medium">Choose a Quantity</h4>
-                    <div className="flex justify-between">
+                    <div className="flex justify-between flex-col sm:flex-row gap-5 sm:gap-0">
                         <div className="flex items-center gap-4">
                             <div className="bg-[var(--color-milk)] py-2 px-4 rounded-3xl flex items-center justify-between w-32">
                                 <button onClick={() => handleQuantity("dec")} className="cursor-pointer text-xl">-</button>
@@ -78,7 +78,7 @@ const ProductDetails = ({ productDetails }: { productDetails: ProductType }) => 
                             <div className="text-xs">Only <span className="text-[var(--color-muted-green)]">{productDetails.numberInStock} items</span> left! <br /> {"Don't"} miss it</div>
                         </div>
                         <div className="flex gap-3">
-                            <button disabled={!(productDetails.numberInStock > 0)} onClick={() => { cart.addItem({ item: productDetails, quantity: quantity, color: productDetails.colors[chosenColor], size: productDetails.sizes[chosenSize], }) }} className="w-32 rounded-3xl ring-1 py-2 px-4 text-xs hover:bg-[var(--color-muted-green)] hover:text-white cursor-pointer disabled:cursor-not-allowed disabled:contrast-150">
+                            <button disabled={!(productDetails.numberInStock > 0)} onClick={() => { cart.addItem({ item: productDetails, quantity: quantity, color: productDetails.colors[chosenColor], size: productDetails.sizes[chosenSize], }) }} className="flex-grow sm:w-32 rounded-3xl ring-1 py-2 px-4 text-xs hover:bg-[var(--color-muted-green)] hover:text-white cursor-pointer disabled:cursor-not-allowed disabled:contrast-150 ">
                                 Add to Cart
                             </button>
                             <Like product={productDetails} />

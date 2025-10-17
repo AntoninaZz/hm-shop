@@ -16,7 +16,7 @@ const OrdersPage = async () => {
                     <p className="font-bold w-1/3 text-right">Total Amount</p>
                 </div>
                 {orders.map((order: OrderType) =>
-                    <div key={order._id} className="flex max-sm:flex-col justify-between items-center gap-2 sm:p-4 hover:bg-[var(--color-milk)] rounded-sm">
+                    <div key={order._id} className="flex max-sm:flex-col justify-between sm:items-center gap-2 p-4 hover:bg-[var(--color-milk)] rounded-sm">
                         <p className="sm:w-1/3"><span className="font-bold sm:hidden">Order ID: </span>{order._id}</p>
                         <div className="flex flex-col gap-4 sm:w-1/3"><span className="font-bold sm:hidden">Products: </span>{
                             order.products.map((item: OrderItemType) =>
@@ -33,7 +33,7 @@ const OrdersPage = async () => {
                                 </div>
                             )}
                         </div>
-                        <p className="sm:w-1/3 text-center sm:text-right"><span className="font-bold sm:hidden">Total Amount: </span>{order.totalAmount.toFixed(2)}₴</p>
+                        <p className="sm:w-1/3 sm:text-right"><span className="font-bold sm:hidden">Total Amount: </span>{order.totalAmount.toFixed(2)}₴</p>
                     </div>
                 )}
             </div>}
