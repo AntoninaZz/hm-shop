@@ -2,6 +2,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { useEffect, useState } from "react";
+import { optimizeCloudinaryUrl } from "@/lib/utils/utils";
 
 export const Slider = ({ slides }: { slides: BannerType[] }) => {
     const [current, setCurrent] = useState(0);
@@ -27,7 +28,7 @@ export const Slider = ({ slides }: { slides: BannerType[] }) => {
                             </Link>
                         </div>
                         <div className="h-1/2 xl:h-full xl:w-1/2 relative">
-                            <Image src={slide.image} alt={slide.title} fill sizes="100%" className="object-cover" />
+                            <Image src={optimizeCloudinaryUrl(slide.image)} alt={slide.title} fill sizes="100%" className="object-cover" priority />
                         </div>
                     </div>
                 ))}

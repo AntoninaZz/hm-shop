@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { Trash2 } from "lucide-react";
 import useCart from "@/lib/hooks/useCart";
+import { optimizeCloudinaryUrl } from "@/lib/utils/utils";
 
 export const CartItem = ({ cartItem }: { cartItem: { item: ProductType, quantity: number, color?: string, size?: string } }) => {
     const cart = useCart();
@@ -10,7 +11,7 @@ export const CartItem = ({ cartItem }: { cartItem: { item: ProductType, quantity
     const stock = variant?.numberInStock ?? 0;
     return (
         <div className="flex gap-4">
-            <Image src={cartItem.item.media[0]} alt={cartItem.item.name} width={72} height={96} className="object-cover rounded-md aspect-square" />
+            <Image src={optimizeCloudinaryUrl(cartItem.item.media[0])} alt={cartItem.item.name} width={72} height={96} className="object-cover rounded-md aspect-square" />
             <div className="flex flex-col justify-between w-full">
                 <div>
                     <div className="flex items-center justify-between gap-8">
