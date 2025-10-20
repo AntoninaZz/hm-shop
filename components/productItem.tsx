@@ -11,8 +11,8 @@ export const ProductItem: React.FC<ProductItemProps> = ({ product, updateSignInU
     return (
         <Link href={`/products/${product._id}`} className={`w-full flex flex-col gap-4 md:w-[45%] lg:w-[22%] ${product.variants.some(variant => variant.numberInStock > 0) ? '' : 'grayscale'}`}>
             <div className="relative w-full h-80">
-                <Image src={product.media[0]} alt={product.name} fill sizes="25vw" className="absolute object-cover rounded-md z-1 hover:opacity-0 transition-opacity ease-in duration-500" />
-                <Image src={product.media[product.media.length - 1]} alt={product.name} fill sizes="25vw" className="absolute object-cover rounded-md" />
+                <Image src={product.media[0]} alt={product.name} fill sizes="(max-width: 640px) 90vw, (max-width: 1024px) 50vw, 25vw" className="absolute object-cover rounded-md z-1 hover:opacity-0 transition-opacity ease-in duration-500" />
+                <Image src={product.media[product.media.length - 1]} alt={product.name} fill sizes="(max-width: 640px) 90vw, (max-width: 1024px) 50vw, 25vw" className="absolute object-cover rounded-md" />
             </div>
             <div className="flex justify-between gap-4 relative">
                 <span className="font-medium text-nowrap overflow-hidden text-ellipsis">{product.name}</span>

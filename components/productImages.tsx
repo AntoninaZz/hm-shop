@@ -12,7 +12,7 @@ export const ProductImages: React.FC<ProductImagesProps> = ({ media }) => {
     return (
         <div>
             <div className="h-[500px] relative">
-                <Image src={media[index]} alt={media[index]} fill sizes='50vw' className="object-cover rounded-md" />
+                <Image src={media[index]} alt={media[index]} fill sizes='(max-width: 640px) 100vw, 50vw' className="object-cover rounded-md" />
             </div>
             <div className="flex gap-4">
                 {media.map((img, i) => (
