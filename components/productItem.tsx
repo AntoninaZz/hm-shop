@@ -9,7 +9,7 @@ interface ProductItemProps {
 
 export const ProductItem: React.FC<ProductItemProps> = ({ product, updateSignInUser }) => {
     return (
-        <Link href={`/products/${product._id}`} className={`w-full flex flex-col gap-4 md:w-[45%] lg:w-[22%] ${product.numberInStock > 0 ? '' : 'grayscale'}`}>
+        <Link href={`/products/${product._id}`} className={`w-full flex flex-col gap-4 md:w-[45%] lg:w-[22%] ${product.variants.some(variant => variant.numberInStock > 0) ? '' : 'grayscale'}`}>
             <div className="relative w-full h-80">
                 <Image src={product.media[0]} alt={product.name} fill sizes="25vw" className="absolute object-cover rounded-md z-1 hover:opacity-0 transition-opacity ease-in duration-500" />
                 <Image src={product.media[product.media.length - 1]} alt={product.name} fill sizes="25vw" className="absolute object-cover rounded-md" />

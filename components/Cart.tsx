@@ -53,7 +53,7 @@ export const Cart: React.FC<CartProps> = ({ className }) => {
                 {cart.cartItems.length === 0 ?
                     <p className="text-sm text-[var(--color-muted-green)]">Your cart is empty :(</p> :
                     <div className="flex flex-col gap-8">
-                        {cart.cartItems.map((cartItem) => <CartItem key={cartItem.item._id} product={cartItem.item} quantity={cartItem.quantity} />)}
+                        {cart.cartItems.map((cartItem) => <CartItem key={`${cartItem.item._id}${cartItem.color}${cartItem.size}`} cartItem={cartItem} />)}
                     </div>
                 }
                 <div>
@@ -62,7 +62,7 @@ export const Cart: React.FC<CartProps> = ({ className }) => {
                         <span>{subtotalRounded.toFixed(2)}₴</span>
                     </div>
                     <p className="text-[var(--color-muted-green)] text-sm mt-2 mb-4">
-                        Delivery is carried out according to the carrier's rates.
+                        Delivery is carried out according to the carrier&apos;s rates.
                     </p>
                 </div>
             </div>

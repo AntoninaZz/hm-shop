@@ -9,11 +9,15 @@ const ProductDetails = ({ productDetails }: { productDetails: ProductType }) => 
     const [chosenColor, setChosenColor] = useState(0);
     const [chosenSize, setChosenSize] = useState(0);
     const [quantity, setQuantity] = useState(1);
+    const selectedVariant = productDetails.variants.find(
+        variant => variant.color === productDetails.colors[chosenColor] && variant.size === productDetails.sizes[chosenSize]
+    );
+    const stock = selectedVariant?.numberInStock ?? 0;
 
     const handleQuantity = (type: "inc" | "dec") => {
         if (type === "dec" && quantity > 1) {
             setQuantity(quantity - 1);
-        } else if (type === "inc" && quantity < productDetails.numberInStock) {
+        } else if (type === "inc" && quantity < stock) {
             setQuantity(quantity + 1);
         }
     }
@@ -75,10 +79,10 @@ const ProductDetails = ({ productDetails }: { productDetails: ProductType }) => 
                                 {quantity}
                                 <button onClick={() => handleQuantity("inc")} className="cursor-pointer text-xl">+</button>
                             </div>
-                            <div className="text-xs">Only <span className="text-[var(--color-muted-green)]">{productDetails.numberInStock} items</span> left! <br /> {"Don't"} miss it</div>
+                            <div className="text-xs">{stock > 0 ? <span>Only <span className="text-[var(--color-muted-green)]">{stock} items</span> left! <br /> {"Don't"} miss it</span> : `Out of stock :(`}</div>
                         </div>
                         <div className="flex gap-3">
-                            <button disabled={!(productDetails.numberInStock > 0)} onClick={() => { cart.addItem({ item: productDetails, quantity: quantity, color: productDetails.colors[chosenColor], size: productDetails.sizes[chosenSize], }) }} className="flex-grow sm:w-32 rounded-3xl ring-1 py-2 px-4 text-xs hover:bg-[var(--color-muted-green)] hover:text-white cursor-pointer disabled:cursor-not-allowed disabled:contrast-150 ">
+                            <button disabled={!(stock > 0)} onClick={() => { cart.addItem({ item: productDetails, quantity: quantity, color: productDetails.colors[chosenColor], size: productDetails.sizes[chosenSize], }) }} className="flex-grow sm:w-32 rounded-3xl ring-1 py-2 px-4 text-xs hover:bg-[var(--color-muted-green)] hover:text-white cursor-pointer disabled:cursor-not-allowed disabled:contrast-150 ">
                                 Add to Cart
                             </button>
                             <Like product={productDetails} />

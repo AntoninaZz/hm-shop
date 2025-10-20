@@ -36,8 +36,12 @@ const ProductsPage = async ({ searchParams }: { searchParams: { search: string, 
                 break;
         }
     }
-    products = products.sort((a, b) => a.numberInStock == 0 ? 1 : b.numberInStock == 0 ? -1 : 0);
-    
+    products = products.sort((a, b) => {
+        const totalA = a.variants.reduce((sum, variant) => sum + variant.numberInStock, 0);
+        const totalB = b.variants.reduce((sum, variant) => sum + variant.numberInStock, 0);
+        return totalA === 0 ? 1 : totalB === 0 ? -1 : 0;
+    });
+
     return (
         <div className="page-padding">
             <Filter categories={categories} />
