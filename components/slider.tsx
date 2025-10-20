@@ -28,7 +28,7 @@ export const Slider = ({ slides }: { slides: BannerType[] }) => {
                             </Link>
                         </div>
                         <div className="h-1/2 xl:h-full xl:w-1/2 relative">
-                            <Image src={optimizeCloudinaryUrl(slide.image)} alt={slide.title} fill sizes="100%" className="object-cover" priority />
+                            <Image src={optimizeCloudinaryUrl(slide.image)} alt={slide.title} fill sizes="100%" className="object-cover" />
                         </div>
                     </div>
                 ))}
