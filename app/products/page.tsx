@@ -33,14 +33,10 @@ const ProductsPage = async ({ searchParams }: { searchParams: { search: string, 
                 products = products.sort((a, b) => a.createdAt > b.createdAt ? 1 : a.createdAt < b.createdAt ? -1 : 0);
                 break;
             default:
+                products = products.sort((a, b) => a.updatedAt < b.updatedAt ? 1 : a.updatedAt > b.updatedAt ? -1 : 0);
                 break;
         }
     }
-    products = products.sort((a, b) => {
-        const totalA = a.variants.reduce((sum, variant) => sum + variant.numberInStock, 0);
-        const totalB = b.variants.reduce((sum, variant) => sum + variant.numberInStock, 0);
-        return totalA === 0 ? 1 : totalB === 0 ? -1 : 0;
-    });
 
     return (
         <div className="page-padding">
