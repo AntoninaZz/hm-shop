@@ -10,7 +10,7 @@ const ProductPage = async ({ params }: { params: { id: string } }) => {
             <ProductDetails productDetails={productDetails} />
             <div className="mt-24 page-padding">
                 <h1 className="text-2xl">Related Products</h1>
-                <ProductList products={relatedProducts.slice(0, 4)} />
+                <ProductList products={relatedProducts.sort((a: ProductType, b: ProductType) => a.updatedAt < b.updatedAt ? 1 : a.updatedAt > b.updatedAt ? -1 : 0).slice(0, 4)} />
             </div>
         </>
     );
