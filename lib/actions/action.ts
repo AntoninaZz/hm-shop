@@ -1,3 +1,12 @@
+const sortProductsByStock = (products: ProductType[]) => {
+    products = products.sort((a: ProductType, b: ProductType) => {
+        const totalA = a.variants.reduce((sum, variant) => sum + variant.numberInStock, 0);
+        const totalB = b.variants.reduce((sum, variant) => sum + variant.numberInStock, 0);
+        return totalA === 0 ? 1 : totalB === 0 ? -1 : 0;
+    });
+    return products;
+}
+
 export const getCategories = async () => {
     const categories = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/categories`);
     return await categories.json();
@@ -9,8 +18,10 @@ export const getBanners = async () => {
 }
 
 export const getProducts = async () => {
-    const products = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/products`);
-    return await products.json();
+    const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/products`);
+    let products = await res.json();
+    products = sortProductsByStock(products);
+    return products;
 }
 
 export const getProductDetails = async (productId: string) => {
@@ -19,8 +30,10 @@ export const getProductDetails = async (productId: string) => {
 }
 
 export const getSearch = async (query: string) => {
-    const products = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/search/${query}`);
-    return await products.json();
+    const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/search/${query}`);
+    let products = await res.json();
+    products = sortProductsByStock(products);
+    return products;
 }
 
 export const getOrders = async (customerId: string) => {
@@ -29,6 +42,8 @@ export const getOrders = async (customerId: string) => {
 }
 
 export const getRelatedProducts = async (productId: string) => {
-    const relatedProducts = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/products/${productId}/related`);
-    return await relatedProducts.json();
+    const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/products/${productId}/related`);
+    let relatedProducts = await res.json();
+    relatedProducts = sortProductsByStock(relatedProducts);
+    return relatedProducts;
 }
