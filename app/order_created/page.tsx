@@ -16,7 +16,7 @@ const OrderCreatedPage = () => {
 
     useEffect(() => {
         cart.clearCart();
-    }, []);
+    }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
     useEffect(() => {
         if (!user || !orderId) return;

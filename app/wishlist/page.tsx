@@ -43,7 +43,7 @@ const WishlistPage = () => {
         if (signedInUser) {
             getWishlistProducts();
         }
-    }, [signedInUser]);
+    }, [signedInUser]); // eslint-disable-line react-hooks/exhaustive-deps
 
     const updateSignInUser = (updatedUser: UserType) => {
         setSignedInUser(updatedUser);

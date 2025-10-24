@@ -1,9 +1,9 @@
 import { auth } from "@clerk/nextjs/server";
-import { NextRequest, NextResponse } from "next/server";
+import { NextResponse } from "next/server";
 import { connectToDB } from "@/lib/mongoDB";
 import User from "@/lib/models/User";
 
-export const GET = async (req: NextRequest) => {
+export const GET = async () => {
     try {
         const { userId } = await auth();
         if (!userId) {

@@ -13,7 +13,7 @@ export const Slider = ({ slides }: { slides: BannerType[] }) => {
             setCurrent((prev) => (prev === slides.length - 1 ? 0 : prev + 1));
         }, 7000);
         return () => clearInterval(interval);
-    }, []);
+    }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
     return (
         <div className="h-[calc(100vh-80px)] overflow-hidden">

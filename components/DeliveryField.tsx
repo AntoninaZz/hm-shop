@@ -28,6 +28,10 @@ export default function DeliveryField({ value, onChange }: DeliveryFieldProps) {
     const [showCityList, setShowCityList] = useState(false);
     const [showWarehouseList, setShowWarehouseList] = useState(false);
 
+    useEffect(() => {
+        setCityQuery(value);
+    }, [value]);
+
     // Дебаунс введення міста (щоб не робити 10 запитів/сек)
     useEffect(() => {
         const timeout = setTimeout(async () => {
