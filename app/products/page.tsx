@@ -4,19 +4,17 @@ import ProductsHeader from "@/components/ProductsHeader";
 import { SearchBar } from "@/components/SearchBar";
 import { getCategories, getProducts, getSearch } from "@/lib/actions/action";
 
-const ProductsPage = async ({ searchParams }: { searchParams: { search: string, cat: string, sort: string } }) => {
+const ProductsPage = async ({ searchParams }: { searchParams: Promise<{ search: string, cat: string, sort: string }> }) => {
+    const { search, cat, sort } = await searchParams;
     const categories = await getCategories();
-    const search = searchParams.search;
-    const category = searchParams.cat;
-    const sort = searchParams.sort;
     let products: ProductType[];
     if (search) {
         products = await getSearch(search);
     } else {
         products = await getProducts();
     }
-    if (category) {
-        products = products.filter((product) => product.category.findIndex((cat) => cat._id === category) > -1);
+    if (cat) {
+        products = products.filter((product) => product.category.findIndex((category) => category._id === cat) > -1);
     }
     if (sort) {
         switch (sort) {
