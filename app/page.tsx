@@ -1,5 +1,5 @@
 import { CategoryList } from "@/components/CategoryList";
-import { ProductList } from "@/components/ProductList";
+import ProductList from "@/components/ProductList";
 import { Slider } from "@/components/Slider";
 import { getBanners, getProducts } from "@/lib/actions/action";
 

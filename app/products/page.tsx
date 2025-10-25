@@ -1,5 +1,5 @@
 import { Filter } from "@/components/Filter";
-import { ProductList } from "@/components/ProductList";
+import ProductList from "@/components/ProductList";
 import ProductsHeader from "@/components/ProductsHeader";
 import { SearchBar } from "@/components/SearchBar";
 import { getCategories, getProducts, getSearch } from "@/lib/actions/action";

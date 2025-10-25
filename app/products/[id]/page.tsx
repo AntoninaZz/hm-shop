@@ -1,5 +1,5 @@
 import ProductDetails from "@/components/ProductDetails";
-import { ProductList } from "@/components/ProductList";
+import ProductList from "@/components/ProductList";
 import { getProductDetails, getRelatedProducts } from "@/lib/actions/action";
 
 const ProductPage = async ({ params }: { params: { id: string } }) => {

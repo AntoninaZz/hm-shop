@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 
-export async function POST(req: NextRequest, { params }: { params: { action: string } }) {
+export async function POST(req: NextRequest) {
     try {
         const body = await req.json();
         const payload = {
@@ -10,7 +10,10 @@ export async function POST(req: NextRequest, { params }: { params: { action: str
             methodProperties: {},
         };
 
-        if (params.action === "settlements") {
+        const segments = req.nextUrl.pathname.split('/');
+        const action = segments[segments.length - 1];
+
+        if (action === "settlements") {
             payload.modelName = "AddressGeneral";
             payload.calledMethod = "getSettlements";
             payload.methodProperties = {
@@ -19,7 +22,7 @@ export async function POST(req: NextRequest, { params }: { params: { action: str
                 Page: "1",
                 Limit: "20",
             };
-        } else if (params.action === "warehouses") {
+        } else if (action === "warehouses") {
             if (!body.cityRef) {
                 return NextResponse.json({ error: "cityRef is required" }, { status: 400 });
             }
