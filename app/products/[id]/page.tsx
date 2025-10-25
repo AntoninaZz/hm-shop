@@ -2,9 +2,10 @@ import ProductDetails from "@/components/ProductDetails";
 import ProductList from "@/components/ProductList";
 import { getProductDetails, getRelatedProducts } from "@/lib/actions/action";
 
-const ProductPage = async ({ params }: { params: { id: string } }) => {
-    const productDetails: ProductType = await getProductDetails(params.id);
-    const relatedProducts = await getRelatedProducts(params.id);
+const ProductPage = async ({ params }: { params: Promise<{ id: string }> }) => {
+    const { id } = await params;
+    const productDetails: ProductType = await getProductDetails(id);
+    const relatedProducts = await getRelatedProducts(id);
     return (
         <>
             <ProductDetails productDetails={productDetails} />
