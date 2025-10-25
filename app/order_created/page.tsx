@@ -1,12 +1,12 @@
 'use client';
-import { useEffect, useState } from 'react';
+import { Suspense, useEffect, useState } from 'react';
 import { useSearchParams } from 'next/navigation';
 import useCart from '@/lib/hooks/useCart';
 import Loader from '@/components/Loader';
 import { getOrders } from '@/lib/actions/action';
 import { useUser } from '@clerk/nextjs';
 
-const OrderCreatedPage = () => {
+const OrderCreatedContent = () => {
     const cart = useCart();
     const { user } = useUser();
     const searchParams = useSearchParams();
@@ -59,5 +59,12 @@ const OrderCreatedPage = () => {
     )
 }
 
-export default OrderCreatedPage;
+export default function OrderCreatedPage() {
+    return (
+        <Suspense fallback={<Loader />}>
+            <OrderCreatedContent />
+        </Suspense>
+    );
+}
+
 export const dynamic = "force-dynamic";
