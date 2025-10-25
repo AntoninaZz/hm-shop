@@ -3,7 +3,7 @@ import { Trash2 } from "lucide-react";
 import useCart from "@/lib/hooks/useCart";
 import { optimizeCloudinaryUrl } from "@/lib/utils/utils";
 
-export const CartItem = ({ cartItem }: { cartItem: { item: ProductType, quantity: number, color?: string, size?: string } }) => {
+const CartItem = ({ cartItem }: { cartItem: { item: ProductType, quantity: number, color?: string, size?: string } }) => {
     const cart = useCart();
     const variant = cartItem.item.variants.find(
         variant => variant.color === cartItem.color && variant.size === cartItem.size
@@ -32,3 +32,5 @@ export const CartItem = ({ cartItem }: { cartItem: { item: ProductType, quantity
         </div>
     );
 }
+
+export default CartItem;

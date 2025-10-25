@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { useUser } from "@clerk/nextjs";
 import { getProductDetails } from "@/lib/actions/action";
 import Loader from "@/components/Loader";
-import { ProductList } from "@/components/ProductList";
+import ProductList from "@/components/ProductList";
 
 const WishlistPage = () => {
     const { user } = useUser();

@@ -4,7 +4,7 @@ import { useUser } from "@clerk/nextjs";
 import { useRouter } from "next/navigation";
 import { toast } from 'react-hot-toast';
 import useCart from "@/lib/hooks/useCart";
-import { CartItem } from "./CartItem";
+import CartItem from "./CartItem";
 import DeliveryField from './DeliveryField';
 
 interface CartProps {
@@ -26,7 +26,7 @@ export const Cart: React.FC<CartProps> = ({ className }) => {
 
     const placeOrder = async (e: React.FormEvent) => {
         e.preventDefault();
-        if(phone.length < 14) {
+        if (phone.length < 14) {
             toast.error("Your phone number is missing some digits");
             return;
         }

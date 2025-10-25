@@ -7,7 +7,7 @@ interface ProductImagesProps {
     media: string[],
 }
 
-export const ProductImages: React.FC<ProductImagesProps> = ({ media }) => {
+const ProductImages: React.FC<ProductImagesProps> = ({ media }) => {
     const [index, setIndex] = useState(0);
 
     return (
@@ -25,3 +25,5 @@ export const ProductImages: React.FC<ProductImagesProps> = ({ media }) => {
         </div>
     );
 }
+
+export default ProductImages;

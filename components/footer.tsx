@@ -1,7 +1,7 @@
 import { Logo } from "./Logo";
 import { Links } from "./Links";
 
-export const Footer = () => {
+const Footer = () => {
     return <footer className="py-10 sm:py-24 page-padding bg-[var(--color-milk)] text-sm mt-24">
         <div className="flex justify-between gap-5 md:gap-24 flex-col md:flex-row">
             <div className="flex flex-col gap-8 w-full md:w-1/8">
@@ -20,3 +20,5 @@ export const Footer = () => {
         </div>
     </footer>;
 }
+
+export default Footer;

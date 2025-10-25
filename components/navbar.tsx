@@ -4,7 +4,7 @@ import { Links } from "./Links";
 import { NavIcons } from "./NavIcons";
 import { Logo } from "./Logo";
 
-export const Navbar = () => {
+const Navbar = () => {
     return <nav className="h-20 sm:h-27 sticky top-0 md:relative page-padding bg-white z-2">
         {/* small screen navbar */}
         <div className="h-full flex items-center justify-between md:hidden"><Logo /><Menu /></div>
@@ -21,3 +21,5 @@ export const Navbar = () => {
         </div>
     </nav>;
 }
+
+export default Navbar;

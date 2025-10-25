@@ -1,7 +1,7 @@
 "use client";
 import { useState } from "react";
 import Like from "@/components/Like";
-import { ProductImages } from "@/components/ProductImages";
+import ProductImages from "@/components/ProductImages";
 import useCart from "@/lib/hooks/useCart";
 
 const ProductDetails = ({ productDetails }: { productDetails: ProductType }) => {
