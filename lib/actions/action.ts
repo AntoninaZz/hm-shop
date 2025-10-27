@@ -1,11 +1,12 @@
 const sortProductsByStock = (products: ProductType[]) => {
-    products = products.sort((a: ProductType, b: ProductType) => {
-        const totalA = a.variants.reduce((sum, variant) => sum + variant.numberInStock, 0);
-        const totalB = b.variants.reduce((sum, variant) => sum + variant.numberInStock, 0);
-        return totalA === 0 ? 1 : totalB === 0 ? -1 : 0;
+    return [...products].sort((a, b) => {
+        const totalA = a.variants.reduce((sum, v) => sum + v.numberInStock, 0);
+        const totalB = b.variants.reduce((sum, v) => sum + v.numberInStock, 0);
+        if (totalA === 0 && totalB !== 0) return 1;
+        if (totalB === 0 && totalA !== 0) return -1;
+        return 0;
     });
-    return products;
-}
+};
 
 export const getCategories = async () => {
     const categories = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/categories`);
