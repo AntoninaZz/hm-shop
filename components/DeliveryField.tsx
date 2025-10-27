@@ -30,7 +30,7 @@ export default function DeliveryField({ value, onChange }: DeliveryFieldProps) {
 
     useEffect(() => {
         setCityQuery(value);
-    }, [value]);
+    }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
     // Дебаунс введення міста (щоб не робити 10 запитів/сек)
     useEffect(() => {
