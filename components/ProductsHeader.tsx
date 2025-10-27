@@ -30,7 +30,7 @@ const ProductsHeader = ({ categories }: { categories: CategoryType[] }) => {
 
     return (
         <>
-            {searchQuery ? <h1 className="mt-12 text-xl">Search results for <span className="font-semibold">{searchQuery}</span></h1> : <h1 className="mt-12 text-xl font-semibold">{selectedCategory ? category?.name : 'Products'}{sort && ' (' + sortHeader + ')'}</h1>}
+            <h1 className="mt-12 text-xl font-semibold">{searchQuery ? <><span className="font-normal">Search results for </span>{searchQuery}</> : selectedCategory ? category?.name : 'Products'}{sort && ' (' + sortHeader + ')'}</h1>
             {selectedCategory ? <p className="text-sm text-[var(--color-muted-green)] mt-5">{category?.description}</p> : ''}
         </>
     )
