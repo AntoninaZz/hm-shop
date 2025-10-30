@@ -52,6 +52,8 @@ type OrderType = {
     totalAmount: number;
     shippingAddress: string;
     comment: string;
+    paymentStatus: string;
+    isSent: boolean;
     createdAt: Date;
 };
 
