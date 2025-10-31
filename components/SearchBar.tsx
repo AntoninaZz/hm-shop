@@ -1,16 +1,13 @@
 "use client";
 import Image from "next/image";
-import { useRouter } from "next/navigation";
 
 export const SearchBar = () => {
-    const router = useRouter();
     const handleSearch = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         const data = new FormData(e.currentTarget);
         const search = data.get("search") as string;
-
         if (search) {
-            router.push(`/products?search=${search}`);
+            window.location.href = `/products?search=${search}`;
         }
     }
 

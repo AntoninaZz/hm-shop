@@ -1,16 +1,11 @@
 "use client";
-import { useSearchParams } from "next/navigation";
 
-const ProductsHeader = ({ categories }: { categories: CategoryType[] }) => {
-    const searchParams = useSearchParams();
-    const selectedCategory = searchParams.get('cat');
-    const searchQuery = searchParams.get('search');
-    const sort = searchParams.get('sort');
+const ProductsHeader = ({ categories, search, filters }: { categories: CategoryType[], search: string | null, filters: { category?: string; sort?: string } }) => {
     let sortHeader = '';
-    const category = categories.find((category) => category._id === selectedCategory);
+    const category = categories.find((category) => category._id === filters.category);
 
-    if (sort) {
-        switch (sort) {
+    if (filters.sort) {
+        switch (filters.sort) {
             case "price-desc":
                 sortHeader = 'from expensive to cheap';
                 break;
@@ -30,8 +25,8 @@ const ProductsHeader = ({ categories }: { categories: CategoryType[] }) => {
 
     return (
         <>
-            <h1 className="mt-12 text-xl font-semibold">{searchQuery ? <><span className="font-normal">Search results for </span>{searchQuery}</> : selectedCategory ? category?.name : 'Products'}{sort && ' (' + sortHeader + ')'}</h1>
-            {selectedCategory ? <p className="text-sm text-[var(--color-muted-green)] mt-5">{category?.description}</p> : ''}
+            <h1 className="mt-12 text-xl font-semibold">{search ? <><span className="font-normal">Search results for </span>{search}</> : filters.category ? category?.name : 'Products'}{filters.sort && ' (' + sortHeader + ')'}</h1>
+            {filters.category ? <p className="text-sm text-[var(--color-muted-green)] mt-5">{category?.description}</p> : ''}
         </>
     )
 }
