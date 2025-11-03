@@ -7,8 +7,6 @@
 ![MongoDB](https://img.shields.io/badge/MongoDB-4EA94B?style=for-the-badge&logo=mongodb&logoColor=white)
 ![Vercel](https://img.shields.io/badge/Deployed_on-Vercel-black?style=for-the-badge&logo=vercel)
 
----
-
 ## 🛍 Overview
 
 **HM-Shop** is a full-stack e-commerce web application for selling **handmade crochet toys**, built with **Next.js (App Router)** and **TypeScript**. The project provides a complete shopping experience — from browsing and filtering products to placing and paying for orders. It includes **authentication**, **wishlist**, **shopping cart**, **order management**, and **integrations** with real delivery and payment APIs. The project is fully responsive and deployed on **Vercel**.
