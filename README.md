@@ -7,15 +7,20 @@
 ![MongoDB](https://img.shields.io/badge/MongoDB-4EA94B?style=for-the-badge&logo=mongodb&logoColor=white)
 ![Vercel](https://img.shields.io/badge/Deployed_on-Vercel-black?style=for-the-badge&logo=vercel)
 
-![HM-Shop Preview](https://raw.githubusercontent.com/antoninazz/hm-shop/main/public/demo.jpg)
-
-**Live Demo:** [https://hm-shop-tawny.vercel.app/](https://hm-shop-tawny.vercel.app/)
-
 ---
 
 ## 🛍 Overview
 
 **HM-Shop** is a full-stack e-commerce web application for selling **handmade crochet toys**, built with **Next.js (App Router)** and **TypeScript**. The project provides a complete shopping experience — from browsing and filtering products to placing and paying for orders. It includes **authentication**, **wishlist**, **shopping cart**, **order management**, and **integrations** with real delivery and payment APIs. The project is fully responsive and deployed on **Vercel**.
+
+![HM-Shop Preview](https://raw.githubusercontent.com/antoninazz/hm-shop/main/public/demo.jpg)
+
+---
+
+## 🚀 Live Demo
+
+🌐 **Website:** [https://hm-shop-tawny.vercel.app/](https://hm-shop-tawny.vercel.app/)  
+👩‍💻 **Author:** [Antonina Zdebska](https://antoninazz.github.io)
 
 ---
 
@@ -84,13 +89,6 @@
 - Creating **responsive layouts** and reusable components with Tailwind CSS
 - **Full deployment workflow and environment management** using Vercel
 - Strong understanding of **TypeScript** and modern frontend architecture for large-scale app development
-
----
-
-## 🚀 Live Demo
-
-🌐 **Website:** [https://hm-shop-tawny.vercel.app/](https://hm-shop-tawny.vercel.app/)  
-👩‍💻 **Author:** [Antonina Zdebska](https://antoninazz.github.io)
 
 ---
 
