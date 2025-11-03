@@ -15,8 +15,6 @@
 
 ![HM-Shop Preview](https://raw.githubusercontent.com/antoninazz/hm-shop/main/public/demo.jpg)
 
----
-
 ## 🚀 Live Demo
 
 🌐 **Website:** [https://hm-shop-tawny.vercel.app/](https://hm-shop-tawny.vercel.app/)  
