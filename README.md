@@ -7,7 +7,7 @@
 ![MongoDB](https://img.shields.io/badge/MongoDB-4EA94B?style=for-the-badge&logo=mongodb&logoColor=white)
 ![Vercel](https://img.shields.io/badge/Deployed_on-Vercel-black?style=for-the-badge&logo=vercel)
 
-![HM-Shop Preview](https://raw.githubusercontent.com/antoninazz/hm-shop/main/public/logo.jpg)
+![HM-Shop Preview](https://raw.githubusercontent.com/antoninazz/hm-shop/main/public/demo.jpg)
 
 **Live Demo:** [https://hm-shop-tawny.vercel.app/](https://hm-shop-tawny.vercel.app/)
 
