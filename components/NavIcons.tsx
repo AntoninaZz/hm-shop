@@ -5,7 +5,11 @@ import { useRouter } from 'next/navigation';
 import useCart from '@/lib/hooks/useCart';
 import { CircleUserRound, ShoppingCart } from 'lucide-react';
 
-export const NavIcons = () => {
+interface NavIconsProps {
+    onClick?: () => void;
+}
+
+export const NavIcons: React.FC<NavIconsProps> = ({ onClick }) => {
     const cart = useCart();
     const router = useRouter();
     const [isProfileOpen, setIsProfileOpen] = useState(false);
@@ -15,6 +19,7 @@ export const NavIcons = () => {
             <div className="relative cursor-pointer" onClick={() => {
                 setIsProfileOpen(false);
                 router.push('/cart');
+                if (onClick) onClick();
             }} >
                 <ShoppingCart />
                 <div className="absolute -top-4 -right-4 w-6 h-6 bg-[var(--color-powder-pink)] rounded-full text-sm flex items-center justify-center">{cart.cartItems.length}</div>
