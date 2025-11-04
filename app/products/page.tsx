@@ -1,7 +1,6 @@
 "use client";
-import { Suspense } from "react";
 import { useEffect, useState } from "react";
-import { useSearchParams, useRouter } from "next/navigation";
+import { useRouter } from "next/navigation";
 import { Filter } from "@/components/Filter";
 import ProductList from "@/components/ProductList";
 import ProductsHeader from "@/components/ProductsHeader";
@@ -16,14 +15,14 @@ const ProductsPage = () => {
     const [filters, setFilters] = useState<{ category?: string; sort?: string }>({});
     const [search, setSearch] = useState<string | null>(null);
     const [loading, setLoading] = useState(true);
-    const searchParams = useSearchParams();
     const router = useRouter();
 
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const searchParam = searchParams.get("search");
-                const catParam = searchParams.get("cat");
+                const url = new URL(window.location.href);
+                const searchParam = url.searchParams.get("search");
+                const catParam = url.searchParams.get("cat");
                 setSearch(searchParam);
 
                 const categoriesData = await getCategories();
@@ -51,7 +50,7 @@ const ProductsPage = () => {
             }
         };
         fetchData();
-    }, [searchParams]);
+    }, []);
 
     useEffect(() => {
         let result = [...products];
@@ -95,7 +94,8 @@ const ProductsPage = () => {
 
     const handleFilterChange = (newFilters: { category?: string; sort?: string }) => {
         setFilters(newFilters);
-        const params = new URLSearchParams(searchParams);
+        const url = new URL(window.location.href);
+        const params = new URLSearchParams(url.searchParams);
         if (newFilters.category) {
             params.set("cat", newFilters.category);
         } else {
@@ -104,16 +104,13 @@ const ProductsPage = () => {
         router.replace(`/products?${params.toString()}`, { scroll: false });
     };
 
-    return (
-        <Suspense fallback={<Loader />}>
-            {loading ? <Loader /> :
-                <div className="page-padding">
-                    <Filter categories={categories} selectedCategory={filters.category} selectedSort={filters.sort} onFilterChange={handleFilterChange} />
-                    <div className="h-8 w-full py-4 md:hidden"><SearchBar /></div>
-                    <ProductsHeader categories={categories} search={search} filters={filters} />
-                    <ProductList products={filteredProducts} />
-                </div>}
-        </Suspense>
+    return (loading ? <Loader /> :
+        <div className="page-padding">
+            <Filter categories={categories} selectedCategory={filters.category} selectedSort={filters.sort} onFilterChange={handleFilterChange} />
+            <div className="h-8 w-full py-4 md:hidden"><SearchBar /></div>
+            <ProductsHeader categories={categories} search={search} filters={filters} />
+            <ProductList products={filteredProducts} />
+        </div>
     );
 }
 
