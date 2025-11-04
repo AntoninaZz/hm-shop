@@ -1,4 +1,5 @@
 "use client";
+import { Suspense } from "react";
 import { useEffect, useState } from "react";
 import { useSearchParams, useRouter } from "next/navigation";
 import { Filter } from "@/components/Filter";
@@ -103,13 +104,16 @@ const ProductsPage = () => {
         router.replace(`/products?${params.toString()}`, { scroll: false });
     };
 
-    return (loading ? <Loader /> :
-        <div className="page-padding">
-            <Filter categories={categories} selectedCategory={filters.category} selectedSort={filters.sort} onFilterChange={handleFilterChange} />
-            <div className="h-8 w-full py-4 md:hidden"><SearchBar /></div>
-            <ProductsHeader categories={categories} search={search} filters={filters} />
-            <ProductList products={filteredProducts} />
-        </div>
+    return (
+        <Suspense fallback={<Loader />}>
+            {loading ? <Loader /> :
+                <div className="page-padding">
+                    <Filter categories={categories} selectedCategory={filters.category} selectedSort={filters.sort} onFilterChange={handleFilterChange} />
+                    <div className="h-8 w-full py-4 md:hidden"><SearchBar /></div>
+                    <ProductsHeader categories={categories} search={search} filters={filters} />
+                    <ProductList products={filteredProducts} />
+                </div>}
+        </Suspense>
     );
 }
 
