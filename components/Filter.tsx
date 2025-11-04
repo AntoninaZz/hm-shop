@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 interface FilterProps {
     categories: CategoryType[];
@@ -11,6 +11,14 @@ interface FilterProps {
 export const Filter: React.FC<FilterProps> = ({ categories, selectedCategory, selectedSort, onFilterChange }) => {
     const [category, setCategory] = useState(selectedCategory || "");
     const [sort, setSort] = useState(selectedSort || "");
+
+    useEffect(() => {
+        setCategory(selectedCategory || "");
+    }, [selectedCategory]);
+
+    useEffect(() => {
+        setSort(selectedSort || "");
+    }, [selectedSort]);
 
     const handleCategoryChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
         const value = e.target.value === "Category" ? "" : e.target.value;

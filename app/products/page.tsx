@@ -1,5 +1,6 @@
 "use client";
 import { useEffect, useState } from "react";
+import { useSearchParams, useRouter } from "next/navigation";
 import { Filter } from "@/components/Filter";
 import ProductList from "@/components/ProductList";
 import ProductsHeader from "@/components/ProductsHeader";
@@ -14,13 +15,16 @@ const ProductsPage = () => {
     const [filters, setFilters] = useState<{ category?: string; sort?: string }>({});
     const [search, setSearch] = useState<string | null>(null);
     const [loading, setLoading] = useState(true);
+    const searchParams = useSearchParams();
+    const router = useRouter();
 
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const url = new URL(window.location.href);
-                const searchParam = url.searchParams.get("search");
+                const searchParam = searchParams.get("search");
+                const catParam = searchParams.get("cat");
                 setSearch(searchParam);
+
                 const categoriesData = await getCategories();
                 let productsData: ProductType[];
                 if (searchParam) {
@@ -28,9 +32,17 @@ const ProductsPage = () => {
                 } else {
                     productsData = await getProducts();
                 }
+
                 setCategories(categoriesData);
                 setProducts(productsData);
                 setFilteredProducts(productsData);
+
+                if (catParam) {
+                    const exists = categoriesData.some((category: CategoryType) => category._id === catParam);
+                    if (exists) {
+                        setFilters((prev) => ({ ...prev, category: catParam }));
+                    }
+                }
             } catch (error) {
                 console.log("[ProductsPage]", error);
             } finally {
@@ -38,7 +50,7 @@ const ProductsPage = () => {
             }
         };
         fetchData();
-    }, []);
+    }, [searchParams]);
 
     useEffect(() => {
         let result = [...products];
@@ -80,9 +92,20 @@ const ProductsPage = () => {
         setFilteredProducts(result);
     }, [filters, products]);
 
+    const handleFilterChange = (newFilters: { category?: string; sort?: string }) => {
+        setFilters(newFilters);
+        const params = new URLSearchParams(searchParams);
+        if (newFilters.category) {
+            params.set("cat", newFilters.category);
+        } else {
+            params.delete("cat");
+        }
+        router.replace(`/products?${params.toString()}`, { scroll: false });
+    };
+
     return (loading ? <Loader /> :
         <div className="page-padding">
-            <Filter categories={categories} selectedCategory={filters.category} selectedSort={filters.sort} onFilterChange={setFilters} />
+            <Filter categories={categories} selectedCategory={filters.category} selectedSort={filters.sort} onFilterChange={handleFilterChange} />
             <div className="h-8 w-full py-4 md:hidden"><SearchBar /></div>
             <ProductsHeader categories={categories} search={search} filters={filters} />
             <ProductList products={filteredProducts} />
